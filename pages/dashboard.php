@@ -17,151 +17,184 @@ session_start();
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-500">Amaze Motor Driving School</h1>
-                <p class="text-lg mt-2">
-                    An admin panel enables administrators of an application, website, or IT system
+            <div class="flex flex-wrap w-full mb-20">
+                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                    <div class="text-center">
+                        <img class="w-72 mb-4" src="/amazeadminpanel/assets/amazelogo.svg" alt="logo" />
+                    </div>
+                    <div class="h-1 w-48 bg-yellow-500 rounded"></div>
+                </div>
+                <p class="lg:w-1/2 w-full leading-relaxed text-gray-500"> An admin panel enables administrators of an application, website, or IT system
                     to manage its configurations, settings,
                     content, and features and carry out oversight functions critical to the
                     business. It allows them to view the state of
-                    the platform and take any action in the performance of their duties
-                </p>
+                    the platform and take any action in the performance of their duties.</p>
             </div>
             <div class="flex flex-wrap -m-4">
-                <div class="p-4 md:w-1/3">
-                    <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-yellow-500 text-white flex-shrink-0">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                                </svg>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/student_registration.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">REGISTRATION</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Student Registration</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/pages/student_registration_form.php">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
                             </div>
-                            <h2 class="text-gray-900 text-lg title-font font-medium">Student Registration</h2>
-                        </div>
-                        <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                            <a class="mt-3 text-yellow-500 inline-flex items-center" href="/amazeadminpanel/pages/student_registration_form.php">Learn More
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="p-4 md:w-1/3">
-                    <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-yellow-500 text-white flex-shrink-0">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/analysys.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Students Detail</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
                             </div>
-                            <h2 class="text-gray-900 text-lg title-font font-medium">Students Detail</h2>
-                        </div>
-                        <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                            <a class="mt-3 text-yellow-500 inline-flex items-center">Learn More
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="p-4 md:w-1/3">
-                    <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-yellow-500 text-white flex-shrink-0">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <circle cx="6" cy="6" r="3"></circle>
-                                    <circle cx="6" cy="18" r="3"></circle>
-                                    <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                                </svg>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/car_maintainence.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">FORM</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Car Maintainence Entry</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
                             </div>
-                            <h2 class="text-gray-900 text-lg title-font font-medium">Fuel Record Entry</h2>
-                        </div>
-                        <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                            <a class="mt-3 text-yellow-500 inline-flex items-center">Learn More
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
                         </div>
                     </div>
                 </div>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/maintainence_detail.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Car Maintainence Detail</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/fuel_consumption_entry.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">FORM</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Fuel Consumption Entry</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/fuel_consumption_details.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Fuel Consumption Detail</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/staff_registration.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">REGISTRATION</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Staff Registration</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/staff_details.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Staff Details</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-1 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/pandl.svg" alt="blog">
+                        <div class="p-6">
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
+                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Net Profit & Loss Statements</h1>
+                            <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <div class="flex items-center flex-wrap ">
+                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
-
-            <!-- Row 2 -->
-
-            <div class="flex flex-wrap -m-4">
-                <div class="p-4 md:w-1/3">
-                    <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-yellow-500 text-white flex-shrink-0">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                                </svg>
-                            </div>
-                            <h2 class="text-gray-900 text-lg title-font font-medium">Fuel Record Details</h2>
-                        </div>
-                        <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                            <a class="mt-3 text-yellow-500 inline-flex items-center">Learn More
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-4 md:w-1/3">
-                    <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-yellow-500 text-white flex-shrink-0">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                            </div>
-                            <h2 class="text-gray-900 text-lg title-font font-medium">Car Maintainence Entry</h2>
-                        </div>
-                        <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                            <a class="mt-3 text-yellow-500 inline-flex items-center">Learn More
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-4 md:w-1/3">
-                    <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-                        <div class="flex items-center mb-3">
-                            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-yellow-500 text-white flex-shrink-0">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <circle cx="6" cy="6" r="3"></circle>
-                                    <circle cx="6" cy="18" r="3"></circle>
-                                    <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                                </svg>
-                            </div>
-                            <h2 class="text-gray-900 text-lg title-font font-medium">Car Maintainence Details</h2>
-                        </div>
-                        <div class="flex-grow">
-                            <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                            <a class="mt-3 text-yellow-500 inline-flex items-center">Learn More
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 </body>
 
