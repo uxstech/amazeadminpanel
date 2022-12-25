@@ -14,6 +14,10 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="">
+
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT=0>
 </head>
 
 <body>
@@ -29,13 +33,13 @@ session_start();
                                         <img class="mx-auto w-48 mb-12" src="assets/amazelogo.svg" alt="logo" />
                                     </div>
                                     <form action="#" method="POST">
-                                        <p class="mb-4">Admin please log into your account</p>
+                                        <p class="mb-4 font-medium">Admin please log into your account</p>
                                         <form>
                                             <div class="mb-4">
-                                                <input type="text" name="username" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput1" placeholder="Username" required />
+                                                <input type="text" name="username" class="form-control block w-full px-3 py-1.5 text-base font-medium text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput1" placeholder="Username" required />
                                             </div>
                                             <div class="mb-4">
-                                                <input type="password" name="password" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput1" placeholder="Password" required />
+                                                <input type="password" name="password" class="form-control block w-full px-3 py-1.5 text-base font-medium text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleFormControlInput1" placeholder="Password" required />
                                             </div>
                                             <div class="text-center pt-1 mb-12 pb-1">
                                                 <button name="login" class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3" type="submit" data-mdb-ripple="true" data-mdb-ripple-color="light" style="
@@ -80,16 +84,19 @@ session_start();
 
 <?php
 include("db_connection.php");
+
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $query = "SELECT * FROM amd_admin_users WHERE username = '$username' AND password = '$password'";
     $data = mysqli_query($conn, $query);
     $total = mysqli_num_rows($data);
+    $row = mysqli_fetch_assoc($data);
     if ($total == 1) {
         $_SESSION['user_name'] = $username;
+        $_SESSION['branch_name'] = $row["branch_name"];
 ?>
-        <meta http-equiv="refresh" content="0; url = http://localhost/amazeadminpanel/pages/dashboard.php" />
+        <meta http-equiv="refresh" content="0; url = http://localhost/amazeadminpanel/dashboard.php" />
 <?php
     } else {
         echo "<script type='text/javascript'>Swal.fire({
