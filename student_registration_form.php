@@ -18,15 +18,15 @@ session_start();
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-12 mt-12 mx-auto">
-            <div class="flex flex-wrap w-full mb-20">
+            <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <div class="text-center">
-                        <img class="w-72 mb-4" src="/amazeadminpanel/assets/amazelogo.svg" alt="logo" />
+                        <img class="w-56 mb-4" src="/amazeadminpanel/assets/amazelogo.svg" alt="logo" />
                     </div>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
-                    <p class="mt-4 title-font text-lg font-medium text-gray-900">Student Registration</p>
+                    <p class="mt-4 text-md font-medium text-gray-900">Student Registration</p>
                 </div>
-                <p class="lg:w-1/2 w-full leading-relaxed title-font font-medium text-gray-900">An admin panel enables administrators of an application, website, or IT system
+                <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
                     to manage its configurations, settings,
                     content, and features and carry out oversight functions critical to the
                     business.</p>
@@ -34,9 +34,9 @@ session_start();
     </section>
 
     <section class="text-gray-600 body-font relative">
-        <div class="container px-5 mb-20  mx-auto">
+        <div class="container px-12 mb-20  mx-auto">
             <form action="#" method="POST" autocomplete="off">
-                <div class="w-[75%] mx-auto">
+                <div class="w-[100%] mx-auto">
                     <div class="flex flex-wrap -m-2">
                         <div class="p-2 w-1/2">
                             <div class="relative">
@@ -117,7 +117,7 @@ session_start();
                             </div>
                         </div>
                         <div class="p-2 w-full mt-5 text-center">
-                            <p class="flex mx-auto w-1/2 leading-relaxed title-font font-medium text-gray-900">Make sure that all the data entered is correct as per the client/student given details.</button>
+                            <p class="flex mx-auto w-1/2 leading-relaxed title-font font-medium text-gray-500">Make sure that all the data entered is correct as per the client/student given details.</button>
                         </div>
                         <div class="p-2 w-full mt-10">
                             <button name="register" type="submit" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Register Student</button>
