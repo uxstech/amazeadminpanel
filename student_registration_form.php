@@ -148,10 +148,11 @@ if (isset($_POST['register'])) {
     $start_time         = $_POST['starttime'];
     $end_time           = $_POST['endtime'];
     $customized_request = $_POST['customizedrequest'];
+    $created_by         = $_SESSION['branch_name'];
 
 
-    $query = "INSERT INTO `amd_student_registered`(`first_name`, `middle_name`, `last_name`, `phone_number`, `email_id`, `address`, `registration_date`, `fees_paid`, `selected_car`, `session_start_time`, `session_end_time`, `any_customized_request`) 
-            VALUES ('$first_name','$middle_name','$last_name','$phone','$email','$address','$registration_date','$fees_paid','$car','$start_time','$end_time','$customized_request')";
+    $query = "INSERT INTO `amd_student_registered`(`first_name`, `middle_name`, `last_name`, `phone_number`, `email_id`, `address`, `registration_date`, `fees_paid`, `selected_car`, `session_start_time`, `session_end_time`, `any_customized_request`, `created_by`) 
+            VALUES ('$first_name','$middle_name','$last_name','$phone','$email','$address','$registration_date','$fees_paid','$car','$start_time','$end_time','$customized_request', '$created_by')";
 
     $data = mysqli_query($conn, $query);
 
