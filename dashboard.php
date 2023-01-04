@@ -61,7 +61,7 @@ session_start();
                             <h1 class="title-font text-md font-medium text-gray-900 mb-3">Students Detail</h1>
                             <p class="leading-relaxed mb-3 text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
                             <div class="flex items-center flex-wrap ">
-                                <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/student_detail_list.php">Continue
+                                <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/student_detail_list.php?page_no=1">Continue
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14"></path>
                                         <path d="M12 5l7 7-7 7"></path>

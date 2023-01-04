@@ -161,7 +161,9 @@ if (isset($_POST['register'])) {
                 icon: 'success',
                 title: 'Student registered successfully!!',
                 text: 'Student has been registered successfuly',
-                });</script>";
+                });
+                setTimeout(() => {  history.go(-2); }, 1000);
+                </script>";
     } else {
         echo "<script type='text/javascript'>Swal.fire({
                 icon: 'error',
