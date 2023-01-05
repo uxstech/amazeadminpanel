@@ -15,6 +15,15 @@ session_start();
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
+<script>
+    history.pushState(null, document.title, location.href);
+    history.back();
+    history.forward();
+    window.onpopstate = function() {
+        history.go(1);
+    };
+</script>
+
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-12 py-12 mx-auto">
@@ -33,6 +42,9 @@ session_start();
                     to manage its configurations, settings,
                     content, and features and carry out oversight functions critical to the
                     business.</p>
+            </div>
+            <div class="flex items-center justify-end -mt-10 mb-8">
+                <a href="logout.php"><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Logout</button></a>
             </div>
             <div class="flex flex-wrap -m-3">
                 <div class="p-1 md:w-1/3">
@@ -197,9 +209,11 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="p-2 w-full mt-10">
-                    <a href="logout.php"><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Logout</button></a>
-                </div>
+                <footer class="text-center text-sm lg:text-left">
+                    <div class="text-gray-500 font-medium text-center p-2">
+                        © 2023 Copyright: Amaze motor driving school
+                    </div>
+                </footer>
             </div>
     </section>
 </body>

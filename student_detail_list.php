@@ -15,6 +15,7 @@ session_start();
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
+
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-12 mt-12 mx-auto">
@@ -33,6 +34,19 @@ session_start();
             </div>
     </section>
     <div class="container px-12 mb-12 mx-auto">
+        <form action="" method="GET">
+            <div class="flex items-center justify-start ">
+                <div class="flex border-2 border-gray-200 rounded">
+                    <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
+                                                                echo $_GET['search'];
+                                                            } ?>" class="px-4 py-2 w-80" placeholder="Search Member">
+                    <button class="px-4 text-white hover:bg-gray-500 bg-gray-400">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
         <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -92,7 +106,14 @@ session_start();
                                 $second_last = $total_no_of_pages - 1;
 
                                 $branchName = $_SESSION['branch_name'];
-                                $query = "SELECT * FROM amd_student_registered  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
+
+                                if (isset($_GET['search'])) {
+                                    $filtervalues = str_replace(' ', '', $_GET['search']);
+                                    $query = "SELECT * FROM amd_student_registered  WHERE CONCAT(first_name,middle_name,last_name) like '%" . $filtervalues . "%' ORDER BY id DESC";
+                                } else {
+                                    $query = "SELECT * FROM amd_student_registered  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
+                                }
+
                                 $query_run = mysqli_query($conn, $query);
 
                                 if (mysqli_num_rows($query_run) > 0) {
@@ -144,99 +165,108 @@ session_start();
                             </tbody>
                         </table>
                     </div>
-                    <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-                        <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                            <div>
-                                <p class="text-sm text-gray-700">
-                                    Showing
-                                    <span class="font-medium"><?php echo $page_no ?></span>
-                                    of
-                                    <span class="font-medium"><?php echo $total_no_of_pages ?> </span>
-                                    results
-                                </p>
-                            </div>
-                            <div>
-                                <ul class="inline-flex -space-x-px">
-                                    <li <?php if ($page_no < 1) {
-                                            echo "class-disabled";
-                                        } ?>>
-                                        <?php if ($page_no != 1) {
-                                            echo "<li><a class='relative inline-flex px-4 items-center rounded-l-md border border-gray-300 bg-white py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20' href='?page_no=1'>First</a></li>";
+                    <?php
+                    if (!isset($_GET['search'])) {
+                    ?>
+                        <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+                            <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-700">
+                                        Showing
+                                        <span class="font-medium"><?php echo $page_no ?></span>
+                                        of
+                                        <span class="font-medium"><?php echo $total_no_of_pages ?> </span>
+                                        results
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <ul class="inline-flex -space-x-px">
+                                        <li <?php if ($page_no < 1) {
+                                                echo "class-disabled";
+                                            } ?>>
+                                            <?php if ($page_no != 1) {
+                                                echo "<li><a class='relative inline-flex px-4 items-center rounded-l-md border border-gray-300 bg-white py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20' href='?page_no=1'>First</a></li>";
+                                            } ?>
+                                            <a <?php if ($page_no > 1) {
+                                                    echo "class='relative inline-flex items-center border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20' href = '?page_no=" . $previous_page . "'";
+                                                } ?>><?php if ($page_no > 1) {
+                                                            echo "Previous";
+                                                        } ?></a>
+                                        </li>
+                                        <?php
+                                        if ($total_no_of_pages <= 10) {
+                                            for ($counter = 1; $counter <= $total_no_of_pages; $counter++) {
+                                                if ($counter == $page_no) {
+                                                    echo "<li class='active'><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>" . $counter . "</a></li>";
+                                                }
+                                            }
+                                        } elseif ($total_no_of_pages > 10) {
+                                            if ($page_no <= 4) {
+                                                for ($counter = 1; $counter < 8; $counter++) {
+                                                    if ($counter == $page_no) {
+                                                        echo "<li class = 'active'><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>" . $counter . "</a></li>";
+                                                    } else {
+                                                        echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href='?page_no=" . $counter . "'>" . $counter . "</a></li>";
+                                                    }
+                                                }
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>...</a></li>";
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $second_last . "'>" . $second_last . "</a></li>";
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $total_no_of_pages . "'>" . $total_no_of_pages . "</a></li>";
+                                            } elseif ($page_no > 4 && $page_no < $total_no_of_pages - 4) {
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=1'>1</a></li>";
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=2'>2</a></li>";
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>...</a></li>";
+                                                for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {
+                                                    if ($counter == $page_no) {
+                                                        echo "<li class = 'active'><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>" . $counter . "</a></li>";
+                                                    } else {
+                                                        echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href='?page_no=" . $counter . "'>" . $counter . "</a></li>";
+                                                    }
+                                                }
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>...</a></li>";
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $second_last . "'>" . $second_last . "</a></li>";
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $total_no_of_pages . "'>" . $total_no_of_pages . "</a></li>";
+                                            } else {
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=1'>1</a></li>";
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=2'>2</a></li>";
+                                                echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>...</a></li>";
+                                                for ($counter = $total_no_of_pages - 6; $counter <= $total_no_of_pages; $counter++) {
+                                                    if ($counter == $page_no) {
+                                                        echo "<li class = 'active'><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>" . $counter . "</a></li>";
+                                                    } else {
+                                                        echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href='?page_no=" . $counter . "'>" . $counter . "</a></li>";
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                        <li <?php if ($page_no >= $total_no_of_pages) {
+                                                echo "class-'disabled'";
+                                            } ?>>
+                                            <a <?php if ($page_no < $total_no_of_pages) {
+                                                    echo "class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $next_page . "'";
+                                                } ?>><?php if ($page_no < $total_no_of_pages) {
+                                                            echo "Next";
+                                                        } ?></a>
+                                        </li>
+                                        <?php if ($page_no < $total_no_of_pages) {
+                                            echo "<li><a class='relative inline-flex px-4 items-center rounded-r-md border border-gray-300 bg-white py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20' href='?page_no=" . $total_no_of_pages . "'>Last</a></li>";
                                         } ?>
-                                        <a <?php if ($page_no > 1) {
-                                                echo "class='relative inline-flex items-center border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20' href = '?page_no=" . $previous_page . "'";
-                                            } ?>><?php if ($page_no > 1) {
-                                                        echo "Previous";
-                                                    } ?></a>
-                                    </li>
-                                    <?php
-                                    if ($total_no_of_pages <= 10) {
-                                        for ($counter = 1; $counter <= $total_no_of_pages; $counter++) {
-                                            if ($counter == $page_no) {
-                                                echo "<li class='active'><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>" . $counter . "</a></li>";
-                                            }
-                                        }
-                                    } elseif ($total_no_of_pages > 10) {
-                                        if ($page_no <= 4) {
-                                            for ($counter = 1; $counter < 8; $counter++) {
-                                                if ($counter == $page_no) {
-                                                    echo "<li class = 'active'><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>" . $counter . "</a></li>";
-                                                } else {
-                                                    echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href='?page_no=" . $counter . "'>" . $counter . "</a></li>";
-                                                }
-                                            }
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>...</a></li>";
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $second_last . "'>" . $second_last . "</a></li>";
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $total_no_of_pages . "'>" . $total_no_of_pages . "</a></li>";
-                                        } elseif ($page_no > 4 && $page_no < $total_no_of_pages - 4) {
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=1'>1</a></li>";
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=2'>2</a></li>";
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>...</a></li>";
-                                            for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {
-                                                if ($counter == $page_no) {
-                                                    echo "<li class = 'active'><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>" . $counter . "</a></li>";
-                                                } else {
-                                                    echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href='?page_no=" . $counter . "'>" . $counter . "</a></li>";
-                                                }
-                                            }
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>...</a></li>";
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $second_last . "'>" . $second_last . "</a></li>";
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $total_no_of_pages . "'>" . $total_no_of_pages . "</a></li>";
-                                        } else {
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=1'>1</a></li>";
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=2'>2</a></li>";
-                                            echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>...</a></li>";
-                                            for ($counter = $total_no_of_pages - 6; $counter <= $total_no_of_pages; $counter++) {
-                                                if ($counter == $page_no) {
-                                                    echo "<li class = 'active'><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex'>" . $counter . "</a></li>";
-                                                } else {
-                                                    echo "<li><a class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href='?page_no=" . $counter . "'>" . $counter . "</a></li>";
-                                                }
-                                            }
-                                        }
-                                    }
-                                    ?>
-                                    <li <?php if ($page_no >= $total_no_of_pages) {
-                                            echo "class-'disabled'";
-                                        } ?>>
-                                        <a <?php if ($page_no < $total_no_of_pages) {
-                                                echo "class='relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex' href = '?page_no=" . $next_page . "'";
-                                            } ?>><?php if ($page_no < $total_no_of_pages) {
-                                                        echo "Next";
-                                                    } ?></a>
-                                    </li>
-                                    <?php if ($page_no < $total_no_of_pages) {
-                                        echo "<li><a class='relative inline-flex px-4 items-center rounded-r-md border border-gray-300 bg-white py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20' href='?page_no=" . $total_no_of_pages . "'>Last</a></li>";
-                                    } ?>
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
+
 
 </html>
 

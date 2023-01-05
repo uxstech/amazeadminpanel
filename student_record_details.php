@@ -41,7 +41,12 @@ if (isset($_GET['id'])) {
                     business.</p>
             </div>
     </section>
+
     <div class="container px-12 mb-12 mx-auto">
+        <div class="flex items-center justify-end -mt-10 mb-8">
+            <button name="addsessionentry" class="modal-open flex text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Session Entry</button>
+        </div>
+
         <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -49,8 +54,8 @@ if (isset($_GET['id'])) {
                         <table class="table-fixed min-w-[100%]">
                             <thead class="bg-white border-b">
                                 <tr class="bg-gray-300">
-                                    <th scope="col" class=" text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Details
+                                    <th scope="col" class="font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        Trainee Details
                                     </th>
                                     <th scope="col" class=" text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                     </th>
@@ -143,7 +148,6 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </body>
-
 
 </html>
 
