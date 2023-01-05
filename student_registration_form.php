@@ -119,12 +119,12 @@ session_start();
                         <div class="p-2 w-full mt-5 text-center">
                             <p class="flex mx-auto w-1/2 leading-relaxed title-font font-medium text-gray-500">Make sure that all the data entered is correct as per the client/student given details.</button>
                         </div>
-                        <div class="p-2 w-full mt-10">
+                        <div class="p-2 w-full">
                             <button name="register" type="submit" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Register Student</button>
                         </div>
+                    </div>
+                </div>
             </form>
-        </div>
-        </div>
         </div>
     </section>
 </body>

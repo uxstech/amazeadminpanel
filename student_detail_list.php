@@ -15,6 +15,14 @@ session_start();
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
+<script>
+    history.pushState(null, document.title, location.href);
+    history.back();
+    history.forward();
+    window.onpopstate = function() {
+        history.go(1);
+    };
+</script>
 
 <body>
     <section class="text-gray-600 body-font">
