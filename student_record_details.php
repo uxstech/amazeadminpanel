@@ -164,6 +164,9 @@ if (isset($_GET['id'])) {
                                         Session Car
                                     </th>
                                     <th scope="col" class="font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        Date
+                                    </th>
+                                    <th scope="col" class="font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
                                         From
                                     </th>
                                     <th scope="col" class="font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
@@ -200,6 +203,9 @@ if (isset($_GET['id'])) {
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                 <?= $row_for_sessions['session_car'] ?>
+                                            </td>
+                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <?= date("d M Y", strtotime($row_for_sessions['session_date'])); ?>
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                 <?= date("g:i a", strtotime($row_for_sessions['from_time'])); ?>

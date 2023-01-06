@@ -113,7 +113,13 @@ if (isset($_GET['id'])) {
                                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" required placeholder="To (Kilometers)" id="tokm" name="tokm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-full">
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="date" class="leading-7 text-sm font-medium text-gray-600">Session Date</label>
+                                <input type="text" required placeholder="Session Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="date" name="date" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+                        <div class="p-2 w-1/2">
                             <div class="relative">
                                 <label for="trainersname" class="leading-7 text-sm font-medium text-gray-600">Trainers Name</label>
                                 <input type="text" maxlength="50" required placeholder="Trainers Name" id="trainersname" name="trainersname" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 font-medium ease-in-out">
@@ -144,6 +150,7 @@ include("db_connection.php");
 if (isset($_POST['add'])) {
     $driving_session_car   = $_POST['car'];
     $driving_session_day   = $_POST['day'];
+    $session_date          = $_POST['date'];
     $from_time             = $_POST['fromtime'];
     $to_time               = $_POST['totime'];
     $from_km               = $_POST['fromkm'];
@@ -154,8 +161,8 @@ if (isset($_POST['add'])) {
     $created_by            = $_SESSION['branch_name'];
 
 
-    $query = "INSERT INTO `amd_student_sessions`(`session_car`, `session_day`, `from_time`, `to_time`, `from_km`, `to_km`, `trainers_name`, `trainers_input`, `student_id`, `created_by`) 
-    VALUES ('$driving_session_car','$driving_session_day','$from_time','$to_time','$from_km','$to_km', '$trainers_name','$trainers_input','$student_id','$created_by')";
+    $query = "INSERT INTO `amd_student_sessions`(`session_car`, `session_day`, `session_date`, `from_time`, `to_time`, `from_km`, `to_km`, `trainers_name`, `trainers_input`, `student_id`, `created_by`) 
+    VALUES ('$driving_session_car','$driving_session_day','$session_date','$from_time','$to_time','$from_km','$to_km', '$trainers_name','$trainers_input','$student_id','$created_by')";
 
     $data = mysqli_query($conn, $query);
 
