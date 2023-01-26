@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Car Maintainence Form</title>
+    <title>Add Record</title>
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
@@ -49,8 +49,8 @@ session_start();
 
                         <div class="p-2 w-full">
                             <div class="relative">
-                                <label for="fees" class="leading-7 text-sm font-medium text-gray-600">Select Car</label>
-                                <select id="inputState" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="selectedcar" class="leading-7 text-sm font-medium text-gray-600">Select Car</label>
+                                <select id="selectedcar" name="selectedcar" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                                     <option class="font-medium" value="" disabled selected>Select Car</option>
                                     <option class="font-medium" value="Amaze">Amaze</option>
                                     <option class="font-medium" value="Swift">Swift</option>
@@ -89,6 +89,12 @@ session_start();
                             </div>
                         </div>
 
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="nextdate" class="leading-7 text-sm font-medium text-gray-600">Next Service Date</label>
+                                <input type="text" required placeholder="Next Service Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="nextdate" name="nextdate" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
@@ -99,35 +105,23 @@ session_start();
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="runningkm" class="leading-7 text-sm font-medium text-gray-600">Running Kilometers</label>
-                                <input type="number" required placeholder="Running Kilometers" id="runningkm" name="runningkm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                            </div>
-                        </div>
-
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="nextdate" class="leading-7 text-sm font-medium text-gray-600">Next Service Date</label>
-                                <input type="text" required placeholder="Next Service Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="nextdate" name="nextdate" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                            </div>
-                        </div>
-
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="nextkm" class="leading-7 text-sm font-medium text-gray-600">Next Kilometers</label>
-                                <input type="number" required placeholder="Next Kilometers" id="nextkm" name="nextkm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                            </div>
-                        </div>
-
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
                                 <label for="mobileno" class="leading-7 text-sm font-medium text-gray-600">Mobile Number of Vendor</label>
                                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required placeholder="Mobile Number of Vendor" id="mobileno" name="mobileno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="workdesc" class="leading-7 text-sm font-medium text-gray-600">Job Description or Parts serviced</label>
+                                <textarea type="text" maxlength="200" placeholder="Job Description or Parts serviced" id="workdesc" name="workdesc" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors font-medium  duration-200 ease-in-out"></textarea>
                             </div>
                         </div>
 
                         <div class="p-2 w-full mt-10">
                             <button name="addrecord" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Add Record</button>
                         </div>
+                    </div>
+                </div>
             </form>
         </div>
     </section>
@@ -137,6 +131,43 @@ session_start();
 
 <?php
 error_reporting(0);
+include("db_connection.php");
+
+if (isset($_POST['addrecord'])) {
+    $selected_car           = $_POST['selectedcar'];
+    $vendor_name            = $_POST['vendorname'];
+    $bill_number            = $_POST['billno'];
+    $bill_amount            = $_POST['amount'];
+    $servicing_date         = $_POST['date'];
+    $next_servicing_date    = $_POST['nextdate'];
+    $vehicle_number         = $_POST['vehicleno'];
+    $mobile_number          = $_POST['mobileno'];
+    $job_description        = $_POST['workdesc'];
+    $created_by             = $_SESSION['branch_name'];
+
+
+    $query = "INSERT INTO `amd_car_maintainence_record`(`service_of_car`, `vendor_name`, `bill_number`, `bill_amount`, `vehicle_number`, `servicing_date`, `next_servicing_date`, `mobile_number`, `job_description`, `created_by`)
+     VALUES ('$selected_car','$vendor_name','$bill_number','$bill_amount','$vehicle_number','$servicing_date','$next_servicing_date','$mobile_number','$job_description','$created_by')";
+
+    $data = mysqli_query($conn, $query);
+
+    if ($data) {
+        echo "<script type='text/javascript'>Swal.fire({
+                icon: 'success',
+                title: 'Record added successfully!!',
+                text: 'Record has been added successfuly',
+                });
+                setTimeout(() => {  history.go(-2); }, 1000);
+                </script>";
+    } else {
+        echo "<script type='text/javascript'>Swal.fire({
+                icon: 'error',
+                title: 'Something went wrong!!',
+                text: 'Make sure you have entered all the data correctly',
+                });</script>";
+    }
+}
+
 $userprofile = $_SESSION['user_name'];
 if ($userprofile == true) {
 } else {

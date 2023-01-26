@@ -115,7 +115,7 @@ if (isset($_POST['addrequest'])) {
         echo "<script type='text/javascript'>Swal.fire({
                 icon: 'success',
                 title: 'Request added successfully!!',
-                text: 'Student has been registered successfuly',
+                text: 'Request has been added successfuly',
                 });
                 setTimeout(() => {  history.go(-2); }, 1000);
                 </script>";

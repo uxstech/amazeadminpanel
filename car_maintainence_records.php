@@ -70,19 +70,31 @@ session_start();
                                         Sr.No
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Customer Name
+                                        Car
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Work
+                                        Vendor
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Mobile Number
+                                        Bill Number
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Amount Paid
+                                        Amount
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Request Date
+                                        Vehicle Number
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        Servicing Date
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        Next Servicing On
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        Vendors Contact
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        Description
                                     </th>
                                 </tr>
                             </thead>
@@ -102,7 +114,7 @@ session_start();
                                 $next_page = $page_no + 1;
                                 $adjacents = "2";
 
-                                $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_customer_requests");
+                                $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_car_maintainence_record");
                                 $total_records = mysqli_fetch_array($result_count);
                                 $total_records = $total_records['total_records'];
                                 $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -112,9 +124,9 @@ session_start();
 
                                 if (isset($_GET['search'])) {
                                     $filtervalues = $_GET['search'];
-                                    $query = "SELECT * FROM amd_customer_requests  WHERE customer_name like '%" . $filtervalues . "%' ORDER BY id DESC";
+                                    $query = "SELECT * FROM amd_car_maintainence_record  WHERE vendor_name like '%" . $filtervalues . "%' OR service_of_car like '%" . $filtervalues . "%' ORDER BY id DESC";
                                 } else {
-                                    $query = "SELECT * FROM amd_customer_requests  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
+                                    $query = "SELECT * FROM amd_car_maintainence_record  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
                                 }
 
                                 $query_run = mysqli_query($conn, $query);
@@ -132,19 +144,31 @@ session_start();
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
 
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= $row['customer_name']; ?>
+                                                <?= $row['service_of_car']; ?>
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= $row['work_description']; ?>
+                                                <?= $row['vendor_name']; ?>
+                                            </td>
+                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <?= $row['bill_number']; ?>
+                                            </td>
+                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <?= "₹ " . $row['bill_amount']; ?>
+                                            </td>
+                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <?= $row['vehicle_number']; ?>
+                                            </td>
+                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <?= date("d M Y", strtotime($row['servicing_date'])); ?>
+                                            </td>
+                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <?= date("d M Y", strtotime($row['next_servicing_date'])); ?>
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                 <?= $row['mobile_number']; ?>
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= "₹ " . $row['fees_paid']; ?>
-                                            </td>
-                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= date("d M Y", strtotime($row['request_date'])); ?>
+                                                <?= $row['job_description']; ?>
                                             </td>
                                         </tr>
                                     <?php
