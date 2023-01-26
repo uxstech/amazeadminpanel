@@ -39,7 +39,7 @@ session_start();
                             <div class="lg:w-6/12 px-4 md:px-0">
                                 <div class="md:p-12 md:mx-6">
                                     <div class="text-center">
-                                        <img class="mx-auto w-48 mb-12" src="assets/amazenewlogo.svg" alt="logo" />
+                                        <img class="mx-auto w-40 mb-12" src="assets/amazenewlogo.svg" alt="logo" />
                                     </div>
                                     <form action="#" method="POST">
                                         <p class="mb-4 font-medium">Admin please log into your account</p>

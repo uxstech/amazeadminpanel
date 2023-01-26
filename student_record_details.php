@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <div class="text-center">
-                        <img class="w-56 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
+                        <img class="w-40 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
                     </div>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
                     <p class="mt-4 text-md font-medium text-gray-900"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ?></p>
