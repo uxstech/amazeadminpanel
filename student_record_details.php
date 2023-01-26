@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Students Info</title>
+    <title>Student Info</title>
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
