@@ -25,69 +25,65 @@ session_start();
 
 <body>
     <section class="text-gray-600 body-font">
-        <div class="container px-12 mt-12 mx-auto">
+        <div class="container px-12 mt-12 mb-12 mx-auto">
+
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <div class="text-center">
-                        <img class="w-40 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
-                    </div>
+                    <p class="mb-4 text-md font-medium text-gray-900">Customer Request Form</p>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
-                    <p class="mt-4 text-md font-medium text-gray-900">Customer Request Form</p>
                 </div>
                 <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
                     to manage its configurations, settings,
                     content, and features and carry out oversight functions critical to the
                     business.</p>
             </div>
-    </section>
 
-    <section class="text-gray-600 body-font relative">
-        <div class="container px-12 mb-20  mx-auto">
-            <form action="#" method="POST" autocomplete="off">
-                <div class="w-[100%] mx-auto">
-                    <div class="flex flex-wrap -m-2">
-                        <div class="p-2 w-full">
-                            <div class="relative">
-                                <label for="customername" class="leading-7 text-sm font-medium text-gray-600">Customer
-                                    Name</label>
-                                <input type="text" required placeholder="Customer Name" id="customername" name="customername" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+            <div class="container px-12 mb-20  mx-auto">
+                <form action="#" method="POST" autocomplete="off">
+                    <div class="w-[100%] mx-auto">
+                        <div class="flex flex-wrap -m-2">
+                            <div class="p-2 w-full">
+                                <div class="relative">
+                                    <label for="customername" class="leading-7 text-sm font-medium text-gray-600">Customer
+                                        Name</label>
+                                    <input type="text" required placeholder="Customer Name" id="customername" name="customername" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="p-2 w-full">
-                            <div class="relative">
-                                <label for="workdesc" class="leading-7 text-sm font-medium text-gray-600">Work Desciption</label>
-                                <textarea type="text" maxlength="200" placeholder="Work Description" id="workdesc" name="workdesc" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors font-medium  duration-200 ease-in-out"></textarea>
+                            <div class="p-2 w-full">
+                                <div class="relative">
+                                    <label for="workdesc" class="leading-7 text-sm font-medium text-gray-600">Work Desciption</label>
+                                    <textarea type="text" maxlength="200" placeholder="Work Description" id="workdesc" name="workdesc" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors font-medium  duration-200 ease-in-out"></textarea>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="fees" class="leading-7 text-sm font-medium text-gray-600">Amount (Fees Paid)</label>
-                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;" required placeholder="Amount Paid" id="fees" name="fees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            <div class="p-2 w-1/2">
+                                <div class="relative">
+                                    <label for="fees" class="leading-7 text-sm font-medium text-gray-600">Amount (Fees Paid)</label>
+                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;" required placeholder="Amount Paid" id="fees" name="fees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                </div>
                             </div>
-                        </div>
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="requestdate" class="leading-7 text-sm font-medium text-gray-600">Request Date</label>
-                                <input type="text" required placeholder="Request Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="requestdate" name="requestdate" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            <div class="p-2 w-1/2">
+                                <div class="relative">
+                                    <label for="requestdate" class="leading-7 text-sm font-medium text-gray-600">Request Date</label>
+                                    <input type="text" required placeholder="Request Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="requestdate" name="requestdate" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="p-2 w-full">
-                            <div class="relative">
-                                <label for="phone" class="leading-7 text-sm font-medium text-gray-600">Customer Mobile Number</label>
-                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required placeholder="Customer Mobile Number" id="phone" name="phone" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            <div class="p-2 w-full">
+                                <div class="relative">
+                                    <label for="phone" class="leading-7 text-sm font-medium text-gray-600">Customer Mobile Number</label>
+                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required placeholder="Customer Mobile Number" id="phone" name="phone" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="p-2 w-full mt-10">
-                            <button name="addrequest" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Add Request</button>
+                            <div class="p-2 w-full mt-10">
+                                <button name="addrequest" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Add Request</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
     </section>
 </body>
 

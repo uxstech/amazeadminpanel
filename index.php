@@ -85,7 +85,7 @@ session_start();
             </div>
             <footer class="text-center text-sm lg:text-left">
                 <div class="text-gray-500 font-medium text-center p-2">
-                    © 2023 Copyright: Amaze motor driving school
+                    © 2023 Copyright: Amaze motor driving school, panel designed & developed by uxstechnologies
                 </div>
             </footer>
         </div>

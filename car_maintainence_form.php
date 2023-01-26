@@ -25,24 +25,19 @@ session_start();
 
 <body>
     <section class="text-gray-600 body-font">
-        <div class="container px-12 mt-12 mx-auto">
+        <div class="container px-12 mt-12 mb-12 mx-auto">
+
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <div class="text-center">
-                        <img class="w-40 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
-                    </div>
+                    <p class="mb-4 text-md font-medium text-gray-900">Car Maintainence Form</p>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
-                    <p class="mt-4 text-md font-medium text-gray-900">Car Maintainence Form</p>
                 </div>
                 <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
                     to manage its configurations, settings,
                     content, and features and carry out oversight functions critical to the
                     business.</p>
             </div>
-    </section>
 
-    <section class="text-gray-600 body-font relative">
-        <div class="container px-12 mb-20  mx-auto">
             <form action="#" method="POST" autocomplete="off">
                 <div class="w-[100%] mx-auto">
                     <div class="flex flex-wrap -m-2">

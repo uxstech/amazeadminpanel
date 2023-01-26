@@ -17,8 +17,8 @@ session_start();
 
 <body>
     <section class="text-gray-600 body-font">
-        <div class="container px-12 py-12 mx-auto">
-            <div class="flex flex-wrap w-full mb-10">
+        <div class="bg-yellow-100 px-12 py-12 mx-auto">
+            <div class="flex flex-wrap w-full ">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <div class="text-center">
                         <img class="w-40 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
@@ -34,9 +34,11 @@ session_start();
                     content, and features and carry out oversight functions critical to the
                     business.</p>
             </div>
-            <div class="flex items-center justify-end -mt-10 mb-8">
+            <div class="flex items-center justify-end -mt-10">
                 <a href="logout.php"><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Logout</button></a>
             </div>
+        </div>
+        <div class="container px-12 py-12 mx-auto">
             <div class="flex flex-wrap -m-3">
                 <div class="p-1 md:w-1/3">
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -146,12 +148,15 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <footer class="text-center text-sm lg:text-left">
-                    <div class="text-gray-500 font-medium text-center p-2">
-                        © 2023 Copyright: Amaze motor driving school
-                    </div>
-                </footer>
             </div>
+        </div>
+        <div class="bg-yellow-100 px-12 py-4 mx-auto">
+            <footer class="text-center text-sm lg:text-left">
+                <div class="text-gray-500 font-medium text-left p-2">
+                    © 2023 Copyright: Amaze motor driving school, panel designed & developed by uxstechnologies
+                </div>
+            </footer>
+        </div>
     </section>
 </body>
 
