@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Students Registered</title>
+    <title>Car Maintainence Records</title>
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
@@ -33,7 +33,7 @@ session_start();
                         <img class="w-56 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
                     </div>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
-                    <p class="mt-4 text-md font-medium text-gray-900">Registered Students</p>
+                    <p class="mt-4 text-md font-medium text-gray-900">Car Maintainence Records</p>
                 </div>
                 <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
                     to manage its configurations, settings,
@@ -47,7 +47,7 @@ session_start();
                 <div class="flex border-2 border-gray-200 rounded">
                     <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
                                                                 echo $_GET['search'];
-                                                            } ?>" class="px-4 py-2 w-80" placeholder="Search Member">
+                                                            } ?>" class="px-4 py-2 w-80" placeholder="Search Record">
                     <button class="px-4 text-white hover:bg-gray-500 bg-gray-400">
                         Search
                     </button>
@@ -56,7 +56,7 @@ session_start();
         </form>
 
         <div class="flex items-center justify-end -mt-10 mb-4">
-            <a href="/amazeadminpanel/student_registration_form.php"><button name="addstudent" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Student</button></a>
+            <a href="/amazeadminpanel/car_maintainence_form.php"><button name="carmaintainenceform" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Record</button></a>
         </div>
 
         <div class="flex flex-col">
@@ -70,28 +70,19 @@ session_start();
                                         Sr.No
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Name
+                                        Customer Name
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Car
+                                        Work
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Phone No.
+                                        Mobile Number
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Amount
+                                        Amount Paid
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        From
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        To
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Registered On
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Action
+                                        Request Date
                                     </th>
                                 </tr>
                             </thead>
@@ -111,7 +102,7 @@ session_start();
                                 $next_page = $page_no + 1;
                                 $adjacents = "2";
 
-                                $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_student_registered");
+                                $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_customer_requests");
                                 $total_records = mysqli_fetch_array($result_count);
                                 $total_records = $total_records['total_records'];
                                 $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -120,10 +111,10 @@ session_start();
                                 $branchName = $_SESSION['branch_name'];
 
                                 if (isset($_GET['search'])) {
-                                    $filtervalues = str_replace(' ', '', $_GET['search']);
-                                    $query = "SELECT * FROM amd_student_registered  WHERE CONCAT(first_name,middle_name,last_name) like '%" . $filtervalues . "%' ORDER BY id DESC";
+                                    $filtervalues = $_GET['search'];
+                                    $query = "SELECT * FROM amd_customer_requests  WHERE customer_name like '%" . $filtervalues . "%' ORDER BY id DESC";
                                 } else {
-                                    $query = "SELECT * FROM amd_student_registered  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
+                                    $query = "SELECT * FROM amd_customer_requests  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
                                 }
 
                                 $query_run = mysqli_query($conn, $query);
@@ -139,29 +130,21 @@ session_start();
                                         <?php
                                         } ?> duration-300 ease-in-out hover:bg-gray-200">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
+
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'];; ?>
+                                                <?= $row['customer_name']; ?>
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= $row['selected_car']; ?>
+                                                <?= $row['work_description']; ?>
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= $row['phone_number']; ?>
+                                                <?= $row['mobile_number']; ?>
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                 <?= "₹ " . $row['fees_paid']; ?>
                                             </td>
                                             <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= date("g:i a", strtotime($row['session_start_time'])); ?>
-                                            </td>
-                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= date("g:i a", strtotime($row['session_end_time'])); ?>
-                                            </td>
-                                            <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                <?= date("d M Y", strtotime($row['registration_date'])); ?>
-                                            </td>
-                                            <td class="flex items-center py-4 px-6 space-x-3">
-                                                <a href="/amazeadminpanel/student_record_details.php?id=<?php echo $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Details</a>
+                                                <?= date("d M Y", strtotime($row['request_date'])); ?>
                                             </td>
                                         </tr>
                                     <?php

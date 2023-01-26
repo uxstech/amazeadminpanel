@@ -29,7 +29,7 @@ session_start();
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <div class="text-center">
-                        <img class="w-56 mb-4" src="/amazeadminpanel/assets/amazelogo.svg" alt="logo" />
+                        <img class="w-56 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
                     </div>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
                     <p class="mt-4 text-md font-medium text-gray-900">Car Maintainence Form</p>
@@ -61,72 +61,72 @@ session_start();
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2">
+                        <div class="p-2 w-full">
                             <div class="relative">
-                                <label for="Vendor Name" class="leading-7 text-sm font-medium text-gray-600">Vendor Name</label>
+                                <label for="vendorname" class="leading-7 text-sm font-medium text-gray-600">Vendor Name (Service Provider)</label>
                                 <input type="text" required placeholder="Vendor Name" id="vendorname" name="vendorname" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="date" class="leading-7 text-sm font-medium text-gray-600">Bill No.</label>
-                                <input type="text" required placeholder="Bill No." id="billno" name="date" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="billno" class="leading-7 text-sm font-medium text-gray-600">Bill Number</label>
+                                <input type="text" required placeholder="Bill Number" id="billno" name="billno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="fees" class="leading-7 text-sm font-medium text-gray-600">Bill Amount</label>
-                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;" required placeholder="Amount Paid" id="fees" name="fees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="amount" class="leading-7 text-sm font-medium text-gray-600">Bill Amount</label>
+                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;" required placeholder="Amount Paid" id="amount" name="amount" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="date" class="leading-7 text-sm font-medium text-gray-600">Date</label>
-                                <input type="text" required placeholder="Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="date" name="date" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="date" class="leading-7 text-sm font-medium text-gray-600">Servicing Date</label>
+                                <input type="text" required placeholder="Servicing Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="date" name="date" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="Vehicle No." class="leading-7 text-sm font-medium text-gray-600">Vehicle No.</label>
-                                <input type="text" required placeholder="Vehicle No." id="vehicleno" name="vehicleno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="vehicleno" class="leading-7 text-sm font-medium text-gray-600">Vehicle Number</label>
+                                <input type="text" required placeholder="Vehicle Number" id="vehicleno" name="vehicleno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="Running Km" class="leading-7 text-sm font-medium text-gray-600">Running Km</label>
-                                <input type="number" required placeholder="Running Km" id="runningkm" name="runningkm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="runningkm" class="leading-7 text-sm font-medium text-gray-600">Running Kilometers</label>
+                                <input type="number" required placeholder="Running Kilometers" id="runningkm" name="runningkm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for=" Next date" class="leading-7 text-sm font-medium text-gray-600"> Next Date</label>
-                                <input type="text" required placeholder="Next Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="nextdate" name="nextdate" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="nextdate" class="leading-7 text-sm font-medium text-gray-600">Next Service Date</label>
+                                <input type="text" required placeholder="Next Service Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="nextdate" name="nextdate" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="Next Km" class="leading-7 text-sm font-medium text-gray-600">Next Km</label>
-                                <input type="number" required placeholder="Next Km" id="nextkm" name="nextkm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="nextkm" class="leading-7 text-sm font-medium text-gray-600">Next Kilometers</label>
+                                <input type="number" required placeholder="Next Kilometers" id="nextkm" name="nextkm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
-                                <label for="Mobile No." class="leading-7 text-sm font-medium text-gray-600">Mobile No.</label>
-                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required placeholder=" Mobile No." id="mobileno" name="mobileno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <label for="mobileno" class="leading-7 text-sm font-medium text-gray-600">Mobile Number of Vendor</label>
+                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required placeholder="Mobile Number of Vendor" id="mobileno" name="mobileno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
                         <div class="p-2 w-full mt-10">
-                            <button name="register" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Submit</button>
+                            <button name="addrecord" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Add Record</button>
                         </div>
             </form>
         </div>
