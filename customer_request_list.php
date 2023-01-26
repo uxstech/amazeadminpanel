@@ -63,22 +63,22 @@ session_start();
                             <table class="table-fixed min-w-full">
                                 <thead class="bg-white border-b">
                                     <tr class="bg-gray-100">
-                                        <th scope="col" class=" text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Sr.No
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Customer Name
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Work
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Mobile Number
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Amount Paid
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Request Date
                                         </th>
                                     </tr>
@@ -126,21 +126,21 @@ session_start();
                                         bg-gray-100
                                         <?php
                                             } ?> duration-300 ease-in-out hover:bg-gray-200">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
+                                                <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
 
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['customer_name']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['work_description']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['mobile_number']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= "₹ " . $row['fees_paid']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("d M Y", strtotime($row['request_date'])); ?>
                                                 </td>
                                             </tr>

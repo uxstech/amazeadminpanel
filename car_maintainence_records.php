@@ -63,34 +63,34 @@ session_start();
                             <table class="table-fixed min-w-full">
                                 <thead class="bg-white border-b">
                                     <tr class="bg-gray-100">
-                                        <th scope="col" class=" text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Sr.No
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Car
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Vendor
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Bill Number
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Amount
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Vehicle Number
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Servicing Date
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Next Servicing On
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Vendors Contact
                                         </th>
-                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Description
                                         </th>
                                     </tr>
@@ -138,33 +138,33 @@ session_start();
                                         bg-gray-100
                                         <?php
                                             } ?> duration-300 ease-in-out hover:bg-gray-200">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
+                                                <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
 
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['service_of_car']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['vendor_name']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['bill_number']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= "₹ " . $row['bill_amount']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['vehicle_number']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("d M Y", strtotime($row['servicing_date'])); ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("d M Y", strtotime($row['next_servicing_date'])); ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['mobile_number']; ?>
                                                 </td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['job_description']; ?>
                                                 </td>
                                             </tr>
