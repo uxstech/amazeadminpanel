@@ -15,6 +15,14 @@ session_start();
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-12 mt-12 mx-auto">
@@ -48,7 +56,22 @@ session_start();
                                     <option class="font-medium" value="Swift">Swift</option>
                                     <option class="font-medium" value="WagonR">WagonR</option>
                                     <option class="font-medium" value="eON">eON</option>
+                                    <option class="font-medium" value="Celerio">Celerio (Automatic)</option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="Vendor Name" class="leading-7 text-sm font-medium text-gray-600">Vendor Name</label>
+                                <input type="text" required placeholder="Vendor Name" id="vendorname" name="vendorname" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="date" class="leading-7 text-sm font-medium text-gray-600">Bill No.</label>
+                                <input type="text" required placeholder="Bill No." id="billno" name="date" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
 
@@ -59,12 +82,53 @@ session_start();
                             </div>
                         </div>
 
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="date" class="leading-7 text-sm font-medium text-gray-600">Date</label>
+                                <input type="text" required placeholder="Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="date" name="date" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="Vehicle No." class="leading-7 text-sm font-medium text-gray-600">Vehicle No.</label>
+                                <input type="text" required placeholder="Vehicle No." id="vehicleno" name="vehicleno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="Running Km" class="leading-7 text-sm font-medium text-gray-600">Running Km</label>
+                                <input type="number" required placeholder="Running Km" id="runningkm" name="runningkm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for=" Next date" class="leading-7 text-sm font-medium text-gray-600"> Next Date</label>
+                                <input type="text" required placeholder="Next Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="nextdate" name="nextdate" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="Next Km" class="leading-7 text-sm font-medium text-gray-600">Next Km</label>
+                                <input type="number" required placeholder="Next Km" id="nextkm" name="nextkm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="Mobile No." class="leading-7 text-sm font-medium text-gray-600">Mobile No.</label>
+                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required placeholder=" Mobile No." id="mobileno" name="mobileno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
                         <div class="p-2 w-full mt-10">
                             <button name="register" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Submit</button>
                         </div>
             </form>
-        </div>
-        </div>
         </div>
     </section>
 </body>

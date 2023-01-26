@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
     </section>
 
     <div class="container px-12 mb-12 mx-auto">
-        <div class="flex items-center justify-end -mt-10 mb-8">
+        <div class="flex items-center justify-end -mt-10 mb-4">
             <a href="/amazeadminpanel/student_session_entry_form.php?id=<?php echo $row['id'] ?>"><button name="addsessionentry" class="modal-open flex text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Session Entry</button></a>
         </div>
         <div class="flex flex-col">

@@ -15,6 +15,14 @@ session_start();
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-12 mt-12 mx-auto">
@@ -59,7 +67,7 @@ session_start();
                         <div class="p-2 w-1/2">
                             <div class="relative">
                                 <label for="phone" class="leading-7 text-sm font-medium text-gray-600">Phone Number</label>
-                                <input type="text" required title="Phone number should be only contain 10 digits" pattern="[1-9]{1}[0-9]{9}" maxlength="10" placeholder="Phone Number" id="phone" name="phone" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required placeholder="Phone Number" id="phone" name="phone" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
                         <div class="p-2 w-full">
@@ -95,6 +103,7 @@ session_start();
                                     <option class="font-medium" value="Swift">Swift</option>
                                     <option class="font-medium" value="WagonR">WagonR</option>
                                     <option class="font-medium" value="eON">eON</option>
+                                    <option class="font-medium" value="Celerio">Celerio (Automatic)</option>
                                 </select>
                             </div>
                         </div>

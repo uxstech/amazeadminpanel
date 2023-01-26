@@ -15,15 +15,6 @@ session_start();
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
-<script>
-    history.pushState(null, document.title, location.href);
-    history.back();
-    history.forward();
-    window.onpopstate = function() {
-        history.go(1);
-    };
-</script>
-
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-12 py-12 mx-auto">
@@ -52,10 +43,10 @@ session_start();
                         <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/student_registration.svg" alt="blog">
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">REGISTRATION</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Student Registration</h1>
+                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Customer Requests</h1>
                             <p class="leading-relaxed mb-3 text-sm text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
                             <div class="flex items-center flex-wrap ">
-                                <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/student_registration_form.php">Continue
+                                <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/customer_request_list.php">Continue
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14"></path>
                                         <path d="M12 5l7 7-7 7"></path>
@@ -70,7 +61,7 @@ session_start();
                         <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/analysys.svg" alt="blog">
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Students Detail</h1>
+                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Training Students</h1>
                             <p class="leading-relaxed mb-3 text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/student_detail_list.php?page_no=1">Continue
@@ -88,7 +79,7 @@ session_start();
                         <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/car_maintainence.svg" alt="blog">
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">FORM</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Car Maintainence Entry</h1>
+                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Car Maintainence Records</h1>
                             <p class="leading-relaxed mb-3 text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/car_maintainence_form.php">Continue
@@ -103,46 +94,10 @@ session_start();
                 </div>
                 <div class="p-1 md:w-1/3">
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/maintainence_detail.svg" alt="blog">
-                        <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Car Maintainence Detail</h1>
-                            <p class="leading-relaxed mb-3 text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-                            <div class="flex items-center flex-wrap ">
-                                <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0">Continue
-                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M5 12h14"></path>
-                                        <path d="M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-1 md:w-1/3">
-                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/fuel_consumption_entry.svg" alt="blog">
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">FORM</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Fuel Consumption Entry</h1>
-                            <p class="leading-relaxed mb-3 text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-                            <div class="flex items-center flex-wrap ">
-                                <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0">Continue
-                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M5 12h14"></path>
-                                        <path d="M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-1 md:w-1/3">
-                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/fuel_consumption_details.svg" alt="blog">
-                        <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Fuel Consumption Detail</h1>
+                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Fuel Consumption Records</h1>
                             <p class="leading-relaxed mb-3 text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0">Continue
@@ -160,28 +115,10 @@ session_start();
                         <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/staff_registration.svg" alt="blog">
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">REGISTRATION</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Staff Registration</h1>
+                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Staff Records</h1>
                             <p class="leading-relaxed mb-3 text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-sm font-medium inline-flex items-center md:mb-2 lg:mb-0">Continue
-                                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M5 12h14"></path>
-                                        <path d="M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-1 md:w-1/3">
-                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                        <img class="lg:h-48 md:h-36 w-full" src="/amazeadminpanel/assets/staff_details.svg" alt="blog">
-                        <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Staff Details</h1>
-                            <p class="leading-relaxed mb-3 text-sm">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-                            <div class="flex items-center font-medium flex-wrap ">
-                                <a class="text-yellow-500 inline-flex items-center md:mb-2 lg:mb-0">Continue
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14"></path>
                                         <path d="M12 5l7 7-7 7"></path>
