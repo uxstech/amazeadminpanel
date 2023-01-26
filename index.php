@@ -20,14 +20,14 @@ session_start();
     <META HTTP-EQUIV="EXPIRES" CONTENT=0>
 </head>
 
-<script>
+<!-- <script>
     history.pushState(null, document.title, location.href);
     history.back();
     history.forward();
     window.onpopstate = function() {
         history.go(1);
     };
-</script>
+</script> -->
 
 <body>
     <section class="h-full gradient-form bg-yellow-100 md:h-screen flex justify-center">
