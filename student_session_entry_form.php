@@ -24,6 +24,14 @@ if (isset($_GET['id'])) {
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-12 mt-12 mb-12 mx-auto">
