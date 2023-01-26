@@ -30,7 +30,7 @@ session_start();
 </script>
 
 <body>
-    <section class="h-full gradient-form bg-white md:h-screen flex justify-center">
+    <section class="h-full gradient-form bg-yellow-100 md:h-screen flex justify-center">
         <div class="container py-12 px-6 h-full">
             <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
                 <div class="xl:w-10/12">
