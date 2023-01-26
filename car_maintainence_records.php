@@ -73,13 +73,13 @@ session_start();
                                             Vendor
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Bill Number
+                                            Bill No.
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Amount
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Vehicle Number
+                                            Vehicle No.
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Servicing Date
