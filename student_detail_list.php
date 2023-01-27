@@ -53,7 +53,7 @@ session_start();
             </form>
 
             <div class="flex items-center justify-end -mt-10 mb-4">
-                <a href="/amazeadminpanel/student_registration_form.php"><button name="addstudent" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Student</button></a>
+                <a href="/amazeadminpanel/student_registration_form.php"><button name="addstudent" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Student</button></a>
             </div>
 
             <div class="flex flex-col">

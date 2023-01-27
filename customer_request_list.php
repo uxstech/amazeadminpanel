@@ -50,7 +50,7 @@ session_start();
                 </div>
             </form>
             <div class="flex items-center justify-end -mt-10 mb-4">
-                <a href="/amazeadminpanel/customer_request_form.php"><button name="addcustomerrequest" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Request</button></a>
+                <a href="/amazeadminpanel/customer_request_form.php"><button name="addcustomerrequest" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Request</button></a>
             </div>
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">

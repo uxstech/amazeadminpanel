@@ -30,10 +30,10 @@ session_start();
             <div class="flex flex-wrap w-full ">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <div class="text-center">
-                        <img class="w-40 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
+                        <img class="w-36 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
                     </div>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
-                    <p class="mt-4 text-md font-medium text-gray-900">Welcome, <?php
+                    <p class="mt-4 text-sm font-medium text-gray-900">Welcome, <?php
                                                                                 $branchName = str_replace("_", " ", $_SESSION['branch_name']);
                                                                                 echo ucwords(strtolower($branchName));
                                                                                 ?></p>
@@ -44,7 +44,7 @@ session_start();
                     business.</p>
             </div>
             <div class="flex items-center justify-end -mt-10">
-                <a href="logout.php"><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Logout</button></a>
+                <a href="logout.php"><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Logout</button></a>
             </div>
         </div>
         <div class="container px-12 py-12 mx-auto">
@@ -160,7 +160,7 @@ session_start();
             </div>
         </div>
         <div class="bg-yellow-100 px-12 py-4 mx-auto">
-            <footer class="text-center text-sm lg:text-left">
+            <footer class="text-center text-xs lg:text-left">
                 <div class="text-gray-500 font-medium text-left p-2">
                     © 2023 Copyright: Amaze motor driving school, panel designed & developed by uxstechnologies
                 </div>

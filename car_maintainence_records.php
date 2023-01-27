@@ -53,7 +53,7 @@ session_start();
             </form>
 
             <div class="flex items-center justify-end -mt-10 mb-4">
-                <a href="/amazeadminpanel/car_maintainence_form.php"><button name="carmaintainenceform" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Record</button></a>
+                <a href="/amazeadminpanel/car_maintainence_form.php"><button name="carmaintainenceform" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Record</button></a>
             </div>
 
             <div class="flex flex-col">

@@ -111,7 +111,7 @@ session_start();
 
 
                         <div class="p-2 w-full mt-10">
-                            <button name="addentry" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Add Entry</button>
+                            <button name="addentry" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Entry</button>
                         </div>
                     </div>
                 </div>

@@ -109,7 +109,7 @@ if (isset($_GET['id'])) {
                             </div>
 
                             <div class="p-2 w-full mt-10">
-                                <button name="updaterequest" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-lg">Update Request</button>
+                                <button name="updaterequest" class=" flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Update Request</button>
                             </div>
                         </div>
                     </div>
