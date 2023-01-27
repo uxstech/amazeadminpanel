@@ -165,7 +165,7 @@ session_start();
                                                     <?= $row['job_description']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <a href="/amazeadminpanel/car_maintainence_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                                    <a href="/amazeadminpanel/car_maintainence_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
                                                 </td>
                                             </tr>
                                         <?php
