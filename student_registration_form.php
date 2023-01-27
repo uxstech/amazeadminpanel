@@ -65,6 +65,23 @@ session_start();
                                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required placeholder="Phone Number" id="phone" name="phone" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="gender" class="leading-7 text-sm font-medium text-gray-600">Selected Gender</label>
+                                <select id="gender" name="gender" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                    <option class="font-medium" value="" disabled selected>Select Gender</option>
+                                    <option class="font-medium" value="Male">Male</option>
+                                    <option class="font-medium" value="Female">Female</option>
+                                    <option class="font-medium" value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="age" class="leading-7 text-sm font-medium text-gray-600">Age</label>
+                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" required placeholder="In Years" id="age" name="age" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label for="email" class="leading-7 text-sm font-medium text-gray-600">Email Id</label>
@@ -120,6 +137,17 @@ session_start();
                                 <textarea type="text" maxlength="200" placeholder="Other specialized requests from client/student" id="customizedrequest" name="customizedrequest" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors font-medium  duration-200 ease-in-out"></textarea>
                             </div>
                         </div>
+                        <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="selectstatus" class="leading-7 text-sm font-medium text-gray-600">Select Status</label>
+                                <select id="selectstatus" name="selectstatus" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                    <option class="font-medium" value="" disabled selected>Select Status</option>
+                                    <option class="font-medium" value="Pending">Pending</option>
+                                    <option class="font-medium" value="In Progress">In Progress</option>
+                                    <option class="font-medium" value="Completed">Completed</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="p-2 w-full mt-5 text-center">
                             <p class="flex mx-auto w-1/2 leading-relaxed title-font font-medium text-gray-500">Make sure that all the data entered is correct as per the client/student given details.</button>
                         </div>
@@ -144,6 +172,8 @@ if (isset($_POST['register'])) {
     $middle_name        = $_POST['middlename'];
     $last_name          = $_POST['lastname'];
     $phone              = $_POST['phone'];
+    $gender             = $_POST['gender'];
+    $age                = $_POST['age'];
     $email              = $_POST['email'];
     $address            = $_POST['address'];
     $registration_date  = $_POST['date'];
@@ -152,11 +182,12 @@ if (isset($_POST['register'])) {
     $start_time         = $_POST['starttime'];
     $end_time           = $_POST['endtime'];
     $customized_request = $_POST['customizedrequest'];
+    $status             = $_POST['selectstatus'];
     $created_by         = $_SESSION['branch_name'];
 
 
-    $query = "INSERT INTO `amd_student_registered`(`first_name`, `middle_name`, `last_name`, `phone_number`, `email_id`, `address`, `registration_date`, `fees_paid`, `selected_car`, `session_start_time`, `session_end_time`, `any_customized_request`, `created_by`) 
-            VALUES ('$first_name','$middle_name','$last_name','$phone','$email','$address','$registration_date','$fees_paid','$car','$start_time','$end_time','$customized_request', '$created_by')";
+    $query = "INSERT INTO `amd_student_registered`(`first_name`, `middle_name`, `last_name`, `phone_number`, `email_id`, `address`, `registration_date`, `fees_paid`, `selected_car`, `session_start_time`, `session_end_time`, `any_customized_request`, `gender`, `age`, `status`, `created_by`) 
+            VALUES ('$first_name','$middle_name','$last_name','$phone','$email','$address','$registration_date','$fees_paid','$car','$start_time','$end_time','$customized_request', '$gender', '$age', '$status', '$created_by')";
 
     $data = mysqli_query($conn, $query);
 

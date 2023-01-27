@@ -39,9 +39,15 @@ if (isset($_GET['id'])) {
                     business.</p>
             </div>
 
-            <div class="flex items-center justify-end mb-4">
-                <a href="/amazeadminpanel/student_session_entry_form.php?id=<?php echo $row['id'] ?>"><button name="addsessionentry" class="modal-open flex text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Session Entry</button></a>
-            </div>
+            <?php
+            if ($row['status'] != 'Completed') {
+            ?>
+                <div class="flex items-center justify-end mb-4">
+                    <a href="/amazeadminpanel/student_session_entry_form.php?id=<?php echo $row['id'] ?>"><button name="addsessionentry" class="modal-open flex text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Session Entry</button></a>
+                </div>
+            <?php
+            }
+            ?>
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -59,78 +65,101 @@ if (isset($_GET['id'])) {
                                 <tbody>
 
                                     <tr class="bg-white border-b transition bg-gray-100 duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Name</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Name Of Trainee</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name']; ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Selected Car</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Selected Car By Trainee</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= $row['selected_car']; ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition bg-gray-100 duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Phone Number</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Phone Number</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= $row['phone_number']; ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Email</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Gender</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                                            <?= $row['gender']; ?>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="bg-white border-b transition bg-gray-100 duration-300 ease-in-out">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Age In Years</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                                            <?= $row['age'] . " Years"; ?>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr class="bg-white border-b transition duration-300 ease-in-out">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Email</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= $row['email_id']; ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition  bg-gray-100 duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Address</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Address</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= $row['address']; ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Registration Date</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Registration Date</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= date("d M Y", strtotime($row['registration_date'])); ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition bg-gray-100 duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Fees Paid</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Fees Paid By Trainee</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= "₹ " . $row['fees_paid']; ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Session Start Time</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Session Start Time</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= date("g:i a", strtotime($row['session_start_time'])); ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition bg-gray-100 duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Session End Time</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Session End Time</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= date("g:i a", strtotime($row['session_end_time'])); ?>
                                         </td>
                                     </tr>
 
                                     <tr class="bg-white border-b transition duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Any Customized Note</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Any Customized Note</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= $row['any_customized_request']; ?>
                                         </td>
                                     </tr>
 
-                                    <tr class="bg-white border-b transition bg-gray-100 duration-300 ease-in-out">
-                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Registered from</td>
-                                        <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                    <tr class="bg-white border-b transition bg-gray-100  duration-300 ease-in-out">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Status</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                                            <?= $row['status']; ?>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr class="bg-white border-b transition duration-300 ease-in-out">
+                                        <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Registered from</td>
+                                        <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                                             <?= ucwords(strtolower(str_replace("_", " ", $row['created_by']))); ?>
                                         </td>
                                     </tr>
@@ -180,6 +209,9 @@ if (isset($_GET['id'])) {
                                         <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
                                             Trainer Inputs
                                         </th>
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                            Action
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -220,6 +252,9 @@ if (isset($_GET['id'])) {
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row_for_sessions['trainers_input']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <a href="/amazeadminpanel/student_session_entry_form_update.php?id=<?php echo $row_for_sessions['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                                 </td>
                                             </tr>
                                         <?php

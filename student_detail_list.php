@@ -70,22 +70,31 @@ session_start();
                                             Name
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Gender
+                                        </th>
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Age
+                                        </th>
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Car
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Phone No.
+                                            Contact
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Amount
                                         </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <!-- <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             From
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             To
-                                        </th>
+                                        </th> 
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Registered On
+                                        </th>-->
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Status
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Action
@@ -140,6 +149,12 @@ session_start();
                                                     <?= $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'];; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= $row['gender']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= $row['age'] . " Years"; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['selected_car']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
@@ -148,7 +163,7 @@ session_start();
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= "₹ " . $row['fees_paid']; ?>
                                                 </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                <!-- <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("g:i a", strtotime($row['session_start_time'])); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
@@ -156,9 +171,25 @@ session_start();
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("d M Y", strtotime($row['registration_date'])); ?>
+                                                </td> -->
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?php if ($row['status'] == 'Completed') {
+                                                    ?>
+                                                        <a class="bg-green-400 text-white rounded px-4 py-1">Completed</a>
+                                                    <?php
+                                                    } else if ($row['status'] == 'In Progress') {
+                                                    ?>
+                                                        <a class="bg-yellow-400 text-white rounded px-4 py-1">In Progress</a>
+                                                    <?php
+                                                    } else if ($row['status'] == 'Pending') {
+                                                    ?>
+                                                        <a class="bg-orange-400 text-white rounded px-4 py-1">Pending</a>
+                                                    <?php
+                                                    }; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <a href="/amazeadminpanel/student_record_details.php?id=<?php echo $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Details</a>
+                                                    <a href="/amazeadminpanel/student_registration_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
+                                                    <a href="/amazeadminpanel/student_record_details.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Details</a>
                                                 </td>
                                             </tr>
                                         <?php

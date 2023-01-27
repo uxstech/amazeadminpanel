@@ -2,10 +2,12 @@
 session_start();
 error_reporting(0);
 include("db_connection.php");
-$id = $_GET['id'];
-$query = "SELECT * FROM amd_customer_requests WHERE id = '$id'";
-$data = mysqli_query($conn, $query);
-$result = mysqli_fetch_assoc($data);
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $query = "SELECT * FROM amd_customer_requests WHERE id = '$id'";
+    $data = mysqli_query($conn, $query);
+    $result = mysqli_fetch_assoc($data);
+}
 ?>
 
 <!DOCTYPE html>

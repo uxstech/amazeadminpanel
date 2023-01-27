@@ -59,6 +59,7 @@ if (isset($_GET['id'])) {
                                     <option class="font-medium" value="Swift">Swift</option>
                                     <option class="font-medium" value="WagonR">WagonR</option>
                                     <option class="font-medium" value="eON">eON</option>
+                                    <option class="font-medium" value="Celerio">Celerio (Automatic)</option>
                                 </select>
                             </div>
                         </div>
