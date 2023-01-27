@@ -27,7 +27,6 @@ session_start();
 <body>
     <section class="text-gray-600 body-font">
         <div class="container px-12 mt-12 mb-12 mx-auto">
-
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <p class="mb-4 text-md font-medium text-gray-900">Customer Requests</p>
@@ -38,7 +37,6 @@ session_start();
                     content, and features and carry out oversight functions critical to the
                     business.</p>
             </div>
-
             <form action="" method="GET">
                 <div class="flex items-center justify-start ">
                     <div class="flex border-4 border-gray-200 rounded">
@@ -51,11 +49,9 @@ session_start();
                     </div>
                 </div>
             </form>
-
             <div class="flex items-center justify-end -mt-10 mb-4">
                 <a href="/amazeadminpanel/customer_request_form.php"><button name="addcustomerrequest" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Request</button></a>
             </div>
-
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -279,6 +275,7 @@ session_start();
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 </body>
 
