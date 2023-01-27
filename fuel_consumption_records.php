@@ -90,6 +90,9 @@ session_start();
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Fuel Filled By
                                         </th>
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Action
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -160,6 +163,9 @@ session_start();
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['fueled_by_coach']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <a href="/amazeadminpanel/fuel_consumption_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
                                                 </td>
                                             </tr>
                                         <?php
