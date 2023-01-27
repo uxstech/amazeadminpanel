@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Customer Requests</title>
+    <title>Fuel Consumption Records</title>
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
@@ -30,7 +30,7 @@ session_start();
 
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <p class="mb-4 text-md font-medium text-gray-900">Customer Requests</p>
+                    <p class="mb-4 text-md font-medium text-gray-900">Fuel Consumption Records</p>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
                 </div>
                 <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
@@ -44,7 +44,7 @@ session_start();
                     <div class="flex border-4 border-gray-200 rounded">
                         <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
                                                                     echo $_GET['search'];
-                                                                } ?>" class="px-4 py-2 w-80 font-medium" placeholder="Search Member">
+                                                                } ?>" class="px-4 py-2 w-80 font-medium" placeholder="Search Entry">
                         <button class="px-4 text-white hover:bg-gray-500 bg-gray-400">
                             Search
                         </button>
@@ -53,7 +53,7 @@ session_start();
             </form>
 
             <div class="flex items-center justify-end -mt-10 mb-4">
-                <a href="/amazeadminpanel/customer_request_form.php"><button name="addcustomerrequest" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Request</button></a>
+                <a href="/amazeadminpanel/fuel_consumption_form.php"><button name="addentryfuelconsumption" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-md">Add Entry</button></a>
             </div>
 
             <div class="flex flex-col">
@@ -67,25 +67,28 @@ session_start();
                                             Sr.No
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Customer Name
+                                            Car
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Work
+                                            Fuel Type
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Mobile Number
+                                            Litre / Kg
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Amount Paid
+                                            Amount
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Request Date
+                                            Date
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Status
+                                            Meter Reading Before
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Action
+                                            Meter Reading After
+                                        </th>
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Fuel Filled By
                                         </th>
                                     </tr>
                                 </thead>
@@ -105,7 +108,7 @@ session_start();
                                     $next_page = $page_no + 1;
                                     $adjacents = "2";
 
-                                    $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_customer_requests");
+                                    $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_car_maintainence_record");
                                     $total_records = mysqli_fetch_array($result_count);
                                     $total_records = $total_records['total_records'];
                                     $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -115,9 +118,9 @@ session_start();
 
                                     if (isset($_GET['search'])) {
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM amd_customer_requests  WHERE customer_name like '%" . $filtervalues . "%' ORDER BY id DESC";
+                                        $query = "SELECT * FROM amd_fuel_consumption_records  WHERE car like '%" . $filtervalues . "%' ORDER BY id DESC";
                                     } else {
-                                        $query = "SELECT * FROM amd_customer_requests  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
+                                        $query = "SELECT * FROM amd_fuel_consumption_records  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
                                     }
 
                                     $query_run = mysqli_query($conn, $query);
@@ -135,25 +138,28 @@ session_start();
                                                 <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
 
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['customer_name']; ?>
+                                                    <?= $row['car']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['work_description']; ?>
+                                                    <?= $row['fuel_type']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['mobile_number']; ?>
+                                                    <?= $row['filled_fuel_in_ltr_or_kg']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['fees_paid']; ?>
+                                                    <?= "₹ " . $row['amount']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= date("d M Y", strtotime($row['request_date'])); ?>
+                                                    <?= date("d M Y", strtotime($row['on_date'])); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['status']; ?>
+                                                    <?= $row['meter_before'] . " Km"; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <a href="/amazeadminpanel/customer_request_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                                    <?= $row['meter_after'] . " Km"; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= $row['fueled_by_coach']; ?>
                                                 </td>
                                             </tr>
                                         <?php
@@ -267,6 +273,7 @@ session_start();
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 </body>
 
