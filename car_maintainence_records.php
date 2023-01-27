@@ -73,25 +73,25 @@ session_start();
                                             Vendor
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Bill No.
-                                        </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Amount
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Vehicle No.
+                                            Number Plate
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Servicing Date
+                                            Date
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Next Servicing On
+                                            Next Service
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Vendors Contact
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Description
+                                        </th>
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Action
                                         </th>
                                     </tr>
                                 </thead>
@@ -147,9 +147,6 @@ session_start();
                                                     <?= $row['vendor_name']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['bill_number']; ?>
-                                                </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= "₹ " . $row['bill_amount']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
@@ -166,6 +163,9 @@ session_start();
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['job_description']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <a href="/amazeadminpanel/car_maintainence_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                                 </td>
                                             </tr>
                                         <?php
