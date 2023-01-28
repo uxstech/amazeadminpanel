@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(0);
+include("db_connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -103,8 +105,7 @@ session_start();
                                 </thead>
                                 <tbody>
                                     <?php
-                                    error_reporting(0);
-                                    include("db_connection.php");
+
                                     if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
                                         $page_no = $_GET['page_no'];
                                     } else {
@@ -127,7 +128,7 @@ session_start();
 
                                     if (isset($_GET['search'])) {
                                         $filtervalues = str_replace(' ', '', $_GET['search']);
-                                        $query = "SELECT * FROM amd_student_registered  WHERE CONCAT(first_name,middle_name,last_name) like '%" . $filtervalues . "%' ORDER BY id DESC";
+                                        $query = "SELECT * FROM amd_student_registered  WHERE CONCAT(first_name,middle_name,last_name) like '%" . $filtervalues . "%' AND created_by ='" . $branchName . "' ORDER BY id DESC";
                                     } else {
                                         $query = "SELECT * FROM amd_student_registered  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
                                     }

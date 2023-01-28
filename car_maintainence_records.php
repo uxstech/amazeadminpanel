@@ -121,7 +121,7 @@ session_start();
 
                                     if (isset($_GET['search'])) {
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM amd_car_maintainence_record  WHERE vendor_name like '%" . $filtervalues . "%' OR service_of_car like '%" . $filtervalues . "%' ORDER BY id DESC";
+                                        $query = "SELECT * FROM amd_car_maintainence_record  WHERE (vendor_name like '%" . $filtervalues . "%' OR service_of_car like '%" . $filtervalues . "%')  AND created_by ='" . $branchName . "'  ORDER BY id DESC";
                                     } else {
                                         $query = "SELECT * FROM amd_car_maintainence_record  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
                                     }

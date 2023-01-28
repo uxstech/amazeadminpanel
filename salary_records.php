@@ -115,7 +115,7 @@ session_start();
 
                                     if (isset($_GET['search'])) {
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM amd_salary_records  WHERE staff_name like '%" . $filtervalues . "%' ORDER BY id DESC";
+                                        $query = "SELECT * FROM amd_salary_records  WHERE staff_name like '%" . $filtervalues . "%' AND created_by ='" . $branchName . "' ORDER BY id DESC";
                                     } else {
                                         $query = "SELECT * FROM amd_salary_records  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
                                     }
