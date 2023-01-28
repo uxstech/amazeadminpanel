@@ -64,7 +64,16 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
             </div>
         </div>
         <div class="container px-12 mt-12 mb-12 mx-auto">
-            <div id="myfirstchart" style="height: 250px;"></div>
+            <?php
+            if (
+                $sum_of_training != 0 && $sum_of_requests != 0 && $sum_of_fuel != 0
+                && $sum_of_maintainence != 0 && $sum_of_salary != 0
+            ) {
+            ?>
+                <div id="myfirstchart" style="height: 250px;"></div>
+            <?php
+            }
+            ?>
             <div class="flex flex-wrap w-full mb-10">
                 <div class="p-1 md:w-1/3 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
