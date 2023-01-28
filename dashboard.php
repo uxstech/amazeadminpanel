@@ -55,7 +55,7 @@ session_start();
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
                             <h1 class="title-font text-md font-medium text-gray-900 mb-3">Customer Requests</h1>
-                            <p class="leading-relaxed mb-3 text-sm text-sm font-medium">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <p class="leading-relaxed mb-3 text-sm text-sm font-medium">Here you can manage all the customer requests and keep the track of it to get it done as soon as possible.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/customer_request_list.php">Continue
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -73,7 +73,7 @@ session_start();
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
                             <h1 class="title-font text-md font-medium text-gray-900 mb-3">Training Students</h1>
-                            <p class="leading-relaxed mb-3 text-sm font-medium">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <p class="leading-relaxed mb-3 text-sm font-medium">Here you can manage and keep track of all the students who are registered for driving classes.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/student_detail_list.php?page_no=1">Continue
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -91,7 +91,7 @@ session_start();
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
                             <h1 class="title-font text-md font-medium text-gray-900 mb-3">Car Maintainence Records</h1>
-                            <p class="leading-relaxed mb-3 text-sm font-medium">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <p class="leading-relaxed mb-3 text-sm font-medium">Here you can overview and add car maintainence records to keep track on expenses on car.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/car_maintainence_records.php">Continue
                                     <svg class=" w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -109,7 +109,7 @@ session_start();
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
                             <h1 class="title-font text-md font-medium text-gray-900 mb-3">Fuel Consumption Records</h1>
-                            <p class="leading-relaxed mb-3 text-sm font-medium">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <p class="leading-relaxed mb-3 text-sm font-medium">Here you can overview and add fuel consumption records to keep track on fuel consumption of each car.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/fuel_consumption_records.php">Continue
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -127,7 +127,7 @@ session_start();
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
                             <h1 class="title-font text-md font-medium text-gray-900 mb-3">Salary Records</h1>
-                            <p class="leading-relaxed mb-3 text-sm font-medium">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <p class="leading-relaxed mb-3 text-sm font-medium">It helps you to overview and add salary records, also you can track salaries disbursed to staff.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/salary_records.php">Continue
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -145,7 +145,7 @@ session_start();
                         <div class="p-6">
                             <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
                             <h1 class="title-font text-md font-medium text-gray-900 mb-3">Net Profit & Expense Statements</h1>
-                            <p class="leading-relaxed mb-3 text-sm font-medium">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                            <p class="leading-relaxed mb-3 text-sm font-medium">It helps you to overview the exact numbers of total profit and expenses along with graphical representation.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="/amazeadminpanel/profit_and_expense_page.php">Continue
                                     <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
