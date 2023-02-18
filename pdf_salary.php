@@ -21,7 +21,7 @@ class PDF extends FPDF
     function Footer()
     {
         $this->SetY(-15);
-        $this->SetFont('Helvetica', 'B', 12);
+        $this->SetFont('Helvetica', 'B', 10);
         $this->SetTextColor(128);
         $this->Cell(0, 10, 'Amaze Motor Driving School', 0, 0, 'C');
     }
@@ -58,8 +58,7 @@ $pdf->Cell(90, 15, $row['staff_present_days'] . " Days", 1, 1, 'C');
 $pdf->Cell(90, 15, 'Contact No', 1, 0, 'C');
 $pdf->Cell(90, 15, $row['staff_contact'], 1, 1, 'C');
 
-
-
+$pdf->Image('assets/certified.png', 130, 220, 50);
 $pdf->SetFont('Helvetica', 'I', 10);
 $pdf->SetTextColor(255, 0, 0);
 $pdf->Ln(10);
