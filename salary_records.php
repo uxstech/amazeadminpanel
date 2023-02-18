@@ -105,7 +105,7 @@ session_start();
                                     $next_page = $page_no + 1;
                                     $adjacents = "2";
 
-                                    $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_car_maintainence_record");
+                                    $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_salary_records");
                                     $total_records = mysqli_fetch_array($result_count);
                                     $total_records = $total_records['total_records'];
                                     $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -155,6 +155,7 @@ session_start();
 
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <a href="/amazeadminpanel/salary_record_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
+                                                    <a href="/amazeadminpanel/pdf_salary.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-red-500 rounded px-3 py-1 hover:underline">Salary Slip</a>
                                                 </td>
                                             </tr>
                                         <?php

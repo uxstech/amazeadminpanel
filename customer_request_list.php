@@ -75,6 +75,9 @@ session_start();
                                             Amount Paid
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Total Amount
+                                        </th>
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Request Date
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -141,6 +144,9 @@ session_start();
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= "₹ " . $row['fees_paid']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= "₹ " . $row['total_fees']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("d M Y", strtotime($row['request_date'])); ?>

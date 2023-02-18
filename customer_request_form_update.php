@@ -72,6 +72,12 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="p-2 w-1/2">
                                 <div class="relative">
+                                    <label for="totalfees" class="leading-7 text-sm font-medium text-gray-600">Total Service Amount</label>
+                                    <input type="number" value="<?php echo $result['total_fees']; ?>" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;" required placeholder="Amount Paid" id="totalfees" name="totalfees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                </div>
+                            </div>
+                            <div class="p-2 w-1/2">
+                                <div class="relative">
                                     <label for="requestdate" class="leading-7 text-sm font-medium text-gray-600">Request Date</label>
                                     <input type="text" value="<?php echo $result['request_date']; ?>" required placeholder="Request Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="requestdate" name="requestdate" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                                 </div>
@@ -125,12 +131,13 @@ if (isset($_POST['updaterequest'])) {
     $customer_name       = $_POST['customername'];
     $work_description    = $_POST['workdesc'];
     $fees_paid           = $_POST['fees'];
+    $total_fees          = $_POST['totalfees'];
     $request_date        = $_POST['requestdate'];
     $mobile_number       = $_POST['phone'];
     $status              = $_POST['selectstatus'];
 
 
-    $query = "UPDATE `amd_customer_requests` SET `customer_name`='$customer_name',`work_description`='$work_description',`fees_paid`='$fees_paid',`request_date`='$request_date',`mobile_number`='$mobile_number',`status`='$status' WHERE id = $id";
+    $query = "UPDATE `amd_customer_requests` SET `customer_name`='$customer_name',`work_description`='$work_description',`fees_paid`='$fees_paid', `total_fees`='$total_fees', `request_date`='$request_date',`mobile_number`='$mobile_number',`status`='$status' WHERE id = $id";
 
     $data = mysqli_query($conn, $query);
 
