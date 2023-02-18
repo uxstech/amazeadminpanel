@@ -121,6 +121,20 @@ if (isset($_GET['id'])) {
 
                         <div class="p-2 w-1/2">
                             <div class="relative">
+                                <label for="servicekm" class="leading-7 text-sm font-medium text-gray-600">Km (Servicing Date)</label>
+                                <input type="number" value="<?= $result['service_km']; ?>" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" required placeholder="Kilometers driven till servicing date" id="servicekm" name="servicekm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="nextservicekm" class="leading-7 text-sm font-medium text-gray-600">Km (Next Servicing Date)</label>
+                                <input type="number" value="<?= $result['next_service_km']; ?>" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==7) return false;" required placeholder="Kilometers to drive for next servicing date" id="nextservicekm" name="nextservicekm" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
                                 <label for="vehicleno" class="leading-7 text-sm font-medium text-gray-600">Vehicle Number</label>
                                 <input type="text" value="<?= $result['vehicle_number']; ?>" required placeholder="Vehicle Number" id="vehicleno" name="vehicleno" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
@@ -160,13 +174,15 @@ if (isset($_POST['updaterecord'])) {
     $bill_amount            = $_POST['amount'];
     $servicing_date         = $_POST['date'];
     $next_servicing_date    = $_POST['nextdate'];
+    $service_km             = $_POST['servicekm'];
+    $next_service_km        = $_POST['nextservicekm'];
     $vehicle_number         = $_POST['vehicleno'];
     $mobile_number          = $_POST['mobileno'];
     $job_description        = $_POST['workdesc'];
     $created_by             = $_SESSION['branch_name'];
 
 
-    $query = "UPDATE `amd_car_maintainence_record` SET `service_of_car`='$selected_car',`vendor_name`='$vendor_name',`bill_number`='$bill_number',`bill_amount`='$bill_amount',`vehicle_number`='$vehicle_number',`servicing_date`='$servicing_date',`next_servicing_date`='$next_servicing_date',`mobile_number`='$mobile_number',`job_description`='$job_description' WHERE id = $id";
+    $query = "UPDATE `amd_car_maintainence_record` SET `service_of_car`='$selected_car',`vendor_name`='$vendor_name',`bill_number`='$bill_number',`bill_amount`='$bill_amount',`vehicle_number`='$vehicle_number',`servicing_date`='$servicing_date',`next_servicing_date`='$next_servicing_date',`service_km`='$service_km', `next_service_km`='$next_service_km', `mobile_number`='$mobile_number',`job_description`='$job_description' WHERE id = $id";
 
     $data = mysqli_query($conn, $query);
 

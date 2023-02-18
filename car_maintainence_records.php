@@ -79,10 +79,13 @@ session_start();
                                             Number Plate
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Date
+                                            Servicing Date
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Next Service
+                                            Service Done at (Km)
+                                        </th>
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Next Service at (Km)
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Vendors Contact
@@ -156,7 +159,10 @@ session_start();
                                                     <?= date("d M Y", strtotime($row['servicing_date'])); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= date("d M Y", strtotime($row['next_servicing_date'])); ?>
+                                                    <?= $row['service_km'] . ' Km'; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= $row['next_service_km'] . ' Km'; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['mobile_number']; ?>
