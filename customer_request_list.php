@@ -50,7 +50,7 @@ session_start();
                 </div>
             </form>
             <div class="flex items-center justify-end -mt-10 mb-4">
-                <a href="/amazeadminpanel/customer_request_form.php"><button name="addcustomerrequest" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Request</button></a>
+                <a href="customer_request_form.php"><button name="addcustomerrequest" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Request</button></a>
             </div>
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -167,7 +167,7 @@ session_start();
                                                     }; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <a href="/amazeadminpanel/customer_request_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
+                                                    <a href="customer_request_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
                                                 </td>
                                             </tr>
                                         <?php

@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
             if ($row['status'] != 'Completed') {
             ?>
                 <div class="flex items-center justify-end mb-4">
-                    <a href="/amazeadminpanel/student_session_entry_form.php?id=<?php echo $row['id'] ?>"><button name="addsessionentry" class="modal-open flex text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Session Entry</button></a>
+                    <a href="student_session_entry_form.php?id=<?php echo $row['id'] ?>"><button name="addsessionentry" class="modal-open flex text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Session Entry</button></a>
                 </div>
             <?php
             }
@@ -224,7 +224,7 @@ if (isset($_GET['id'])) {
                                     ?>
                                             <tr class="bg-white border-b transition duration-300 ease-in-out">
                                                 <td class="border w-[4%] text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <img class="w-8" src="/amazeadminpanel/assets/check.png" alt="logo" />
+                                                    <img class="w-8" src="assets/check.png" alt="logo" />
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row_for_sessions['session_day'] ?>
@@ -254,7 +254,7 @@ if (isset($_GET['id'])) {
                                                     <?= $row_for_sessions['trainers_input']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <a href="/amazeadminpanel/student_session_entry_form_update.php?id=<?php echo $row_for_sessions['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
+                                                    <a href="student_session_entry_form_update.php?id=<?php echo $row_for_sessions['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
                                                 </td>
                                             </tr>
                                         <?php

@@ -53,7 +53,7 @@ session_start();
             </form>
 
             <div class="flex items-center justify-end -mt-10 mb-4">
-                <a href="/amazeadminpanel/car_maintainence_form.php"><button name="carmaintainenceform" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Record</button></a>
+                <a href="car_maintainence_form.php"><button name="carmaintainenceform" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Record</button></a>
             </div>
 
             <div class="flex flex-col">
@@ -165,7 +165,7 @@ session_start();
                                                     <?= $row['job_description']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <a href="/amazeadminpanel/car_maintainence_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
+                                                    <a href="car_maintainence_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
                                                 </td>
                                             </tr>
                                         <?php

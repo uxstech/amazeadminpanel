@@ -52,7 +52,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
             <div class="flex flex-wrap w-full ">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <div class="text-center">
-                        <img class="w-36 mb-4" src="/amazeadminpanel/assets/amazenewlogo.svg" alt="logo" />
+                        <img class="w-36 mb-4" src="assets/amazenewlogo.svg" alt="logo" />
                     </div>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
                     <p class="mt-4 text-sm font-medium text-gray-900">Net Profit & Expense Overview</p>
@@ -61,6 +61,9 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
                     to manage its configurations, settings,
                     content, and features and carry out oversight functions critical to the
                     business.</p>
+            </div>
+            <div class="flex items-center justify-end -mt-10">
+                <a href=""><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Overview Transactions</button></a>
             </div>
         </div>
         <div class="container px-12 mt-12 mb-12 mx-auto">
