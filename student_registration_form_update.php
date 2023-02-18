@@ -123,10 +123,16 @@ if (isset($_GET['id'])) {
                         <div class="p-2 w-1/2">
                             <div class="relative">
                                 <label for="fees" class="leading-7 text-sm font-medium text-gray-600">Amount (Fees Paid)</label>
-                                <input type="number" value="<?= $result['fees_paid']; ?>" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" required placeholder="Amount Paid" id="fees" name="fees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                                <input type="number" value="<?= $result['fees_paid']; ?>" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" required placeholder="Amount Paid" id="fees" name="fees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-full">
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="totalfees" class="leading-7 text-sm font-medium text-gray-600">Total Amount</label>
+                                <input type="number" value="<?= $result['total_fees']; ?>" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" required placeholder="Total Fee" id="totalfees" name="totalfees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+                        <div class="p-2 w-1/2">
                             <div class="relative">
                                 <label for="car" class="leading-7 text-sm font-medium text-gray-600">Selected Car</label>
                                 <select id="car" name="car" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
@@ -227,13 +233,14 @@ if (isset($_POST['update'])) {
     $address            = $_POST['address'];
     $registration_date  = $_POST['date'];
     $fees_paid          = $_POST['fees'];
+    $total_fees         = $_POST['totalfees'];
     $car                = $_POST['car'];
     $start_time         = $_POST['starttime'];
     $end_time           = $_POST['endtime'];
     $status             = $_POST['selectstatus'];
     $customized_request = $_POST['customizedrequest'];
 
-    $query = "UPDATE `amd_student_registered` SET `first_name`='$first_name',`middle_name`='$middle_name',`last_name`='$last_name',`phone_number`='$phone',`email_id`='$email',`address`='$address',`registration_date`='$registration_date',`fees_paid`='$fees_paid',`selected_car`='$car',`session_start_time`='$start_time',`session_end_time`='$end_time',`any_customized_request`='$customized_request',`gender`='$gender',`age`='$age',`status`='$status' WHERE id = $id";
+    $query = "UPDATE `amd_student_registered` SET `first_name`='$first_name',`middle_name`='$middle_name',`last_name`='$last_name',`phone_number`='$phone',`email_id`='$email',`address`='$address',`registration_date`='$registration_date',`fees_paid`='$fees_paid',`total_fees`='$total_fees',`selected_car`='$car',`session_start_time`='$start_time',`session_end_time`='$end_time',`any_customized_request`='$customized_request',`gender`='$gender',`age`='$age',`status`='$status' WHERE id = $id";
 
     $data = mysqli_query($conn, $query);
 

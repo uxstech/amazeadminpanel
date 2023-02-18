@@ -106,7 +106,13 @@ session_start();
                                 <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" required placeholder="Amount Paid" id="fees" name="fees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-full">
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="totalfees" class="leading-7 text-sm font-medium text-gray-600">Total Amount</label>
+                                <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" required placeholder="Total fee" id="totalfees" name="totalfees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
+                            </div>
+                        </div>
+                        <div class="p-2 w-1/2">
                             <div class="relative">
                                 <label for="car" class="leading-7 text-sm font-medium text-gray-600">Selected Car</label>
                                 <select id="car" name="car" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
@@ -178,6 +184,7 @@ if (isset($_POST['register'])) {
     $address            = $_POST['address'];
     $registration_date  = $_POST['date'];
     $fees_paid          = $_POST['fees'];
+    $total_fees         = $_POST['totalfees'];
     $car                = $_POST['car'];
     $start_time         = $_POST['starttime'];
     $end_time           = $_POST['endtime'];
@@ -186,8 +193,8 @@ if (isset($_POST['register'])) {
     $created_by         = $_SESSION['branch_name'];
 
 
-    $query = "INSERT INTO `amd_student_registered`(`first_name`, `middle_name`, `last_name`, `phone_number`, `email_id`, `address`, `registration_date`, `fees_paid`, `selected_car`, `session_start_time`, `session_end_time`, `any_customized_request`, `gender`, `age`, `status`, `created_by`) 
-            VALUES ('$first_name','$middle_name','$last_name','$phone','$email','$address','$registration_date','$fees_paid','$car','$start_time','$end_time','$customized_request', '$gender', '$age', '$status', '$created_by')";
+    $query = "INSERT INTO `amd_student_registered`(`first_name`, `middle_name`, `last_name`, `phone_number`, `email_id`, `address`, `registration_date`, `fees_paid`, `total_fees`, `selected_car`, `session_start_time`, `session_end_time`, `any_customized_request`, `gender`, `age`, `status`, `created_by`) 
+            VALUES ('$first_name','$middle_name','$last_name','$phone','$email','$address','$registration_date','$fees_paid','$total_fees','$car','$start_time','$end_time','$customized_request', '$gender', '$age', '$status', '$created_by')";
 
     $data = mysqli_query($conn, $query);
 

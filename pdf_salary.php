@@ -34,9 +34,8 @@ $pdf->AddPage();
 
 $pdf->SetY(50);
 $pdf->SetFont('Helvetica', 'I', 12);
-$pdf->Cell(0, 10, str_replace("_", " ", $_SESSION['branch_name']), 0, 1, 'L');
-$pdf->Cell(0, 2, 'EMPLOYER : AMAZE MOTOR DRIVING SCHOOL', 0, 1, 'L');
-$pdf->Cell(0, 20, 'This salary slip belongs to ' . $row['staff_name'] . ' working at Amaze Motor Driving School', 0, 1, 'L');
+$pdf->Cell(0, 10, str_replace("_", " ", 'BRANCH : ' . $_SESSION['branch_name']), 0, 1, 'L');
+$pdf->Cell(0, 2, 'STAFF NAME : ' . strtoupper($row['staff_name']), 0, 1, 'L');
 $pdf->Ln(5);
 
 $pdf->SetFont('Helvetica', '', 14);

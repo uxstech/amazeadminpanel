@@ -84,7 +84,10 @@ include("db_connection.php");
                                             Contact
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Amount
+                                            Paid
+                                        </th>
+                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Total Amount
                                         </th>
                                         <!-- <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             From
@@ -163,6 +166,9 @@ include("db_connection.php");
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= "₹ " . $row['fees_paid']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= "₹ " . $row['total_fees']; ?>
                                                 </td>
                                                 <!-- <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("g:i a", strtotime($row['session_start_time'])); ?>
