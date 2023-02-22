@@ -195,7 +195,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
     }
 </style>
 <script>
-    new Morris.Area({
+    new Morris.Donut({
         // ID of the element in which to draw the chart.
         element: 'myfirstchart',
 
