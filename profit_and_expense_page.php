@@ -63,7 +63,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
                     business.</p>
             </div>
             <div class="flex items-center justify-end -mt-10">
-                <a href=""><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Overview Transactions</button></a>
+                <a href="transaction_records.php"><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Overview Transactions</button></a>
             </div>
         </div>
         <div class="container px-12 mt-12 mb-12 mx-auto">

@@ -159,7 +159,7 @@ if (isset($_POST['addrecord'])) {
 
     $query = "INSERT INTO `amd_car_maintainence_record`(`service_of_car`, `vendor_name`, `bill_number`, `bill_amount`, `vehicle_number`, `servicing_date`, `next_servicing_date`, `service_km`, `next_service_km`, `mobile_number`, `job_description`, `created_by`)
      VALUES ('$selected_car','$vendor_name','$bill_number','$bill_amount','$vehicle_number','$servicing_date','$next_servicing_date','$service_km','$next_service_km','$mobile_number','$job_description','$created_by')";
-    echo $query;
+
     $data = mysqli_query($conn, $query);
 
     if ($data) {

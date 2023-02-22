@@ -1,7 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
-include("db_connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +11,7 @@ include("db_connection.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Students Registered</title>
+    <title>Transaction Records</title>
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
@@ -32,7 +30,7 @@ include("db_connection.php");
 
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <p class="mb-4 text-md font-medium text-gray-900">Registered Students</p>
+                    <p class="mb-4 text-md font-medium text-gray-900">Transaction Records</p>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
                 </div>
                 <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
@@ -46,7 +44,7 @@ include("db_connection.php");
                     <div class="flex border-4 border-gray-200 rounded">
                         <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
                                                                     echo $_GET['search'];
-                                                                } ?>" class="px-4 py-2 w-80 font-medium" placeholder="Search Member">
+                                                                } ?>" class="px-4 py-2 w-80 font-medium" placeholder="Search Record">
                         <button class="px-4 text-white hover:bg-gray-500 bg-gray-400">
                             Search
                         </button>
@@ -55,7 +53,7 @@ include("db_connection.php");
             </form>
 
             <div class="flex items-center justify-end -mt-10 mb-4">
-                <a href="student_registration_form.php"><button name="addstudent" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Student</button></a>
+                <a href="transaction_form.php"><button name="carmaintainenceform" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Record</button></a>
             </div>
 
             <div class="flex flex-col">
@@ -69,37 +67,22 @@ include("db_connection.php");
                                             Sr.No
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Name
+                                            Type
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Gender
+                                            Payer
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Age
+                                            Receiver
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Car
+                                            Amount
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Contact
+                                            Date
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Paid
-                                        </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Total Amount
-                                        </th>
-                                        <!-- <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            From
-                                        </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            To
-                                        </th> 
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Registered On
-                                        </th>-->
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            Status
+                                            Reason
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Action
@@ -108,7 +91,8 @@ include("db_connection.php");
                                 </thead>
                                 <tbody>
                                     <?php
-
+                                    error_reporting(0);
+                                    include("db_connection.php");
                                     if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
                                         $page_no = $_GET['page_no'];
                                     } else {
@@ -121,7 +105,7 @@ include("db_connection.php");
                                     $next_page = $page_no + 1;
                                     $adjacents = "2";
 
-                                    $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_student_registered");
+                                    $result_count = mysqli_query($conn, "SELECT COUNT(*) AS total_records FROM amd_transaction_records");
                                     $total_records = mysqli_fetch_array($result_count);
                                     $total_records = $total_records['total_records'];
                                     $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -130,10 +114,10 @@ include("db_connection.php");
                                     $branchName = $_SESSION['branch_name'];
 
                                     if (isset($_GET['search'])) {
-                                        $filtervalues = str_replace(' ', '', $_GET['search']);
-                                        $query = "SELECT * FROM amd_student_registered  WHERE CONCAT(first_name,middle_name,last_name) like '%" . $filtervalues . "%' AND created_by ='" . $branchName . "' ORDER BY id DESC";
+                                        $filtervalues = $_GET['search'];
+                                        $query = "SELECT * FROM amd_transaction_records  WHERE (given_by like '%" . $filtervalues . "%' OR given_to like '%" . $filtervalues . "%')  AND created_by ='" . $branchName . "'  ORDER BY id DESC";
                                     } else {
-                                        $query = "SELECT * FROM amd_student_registered  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
+                                        $query = "SELECT * FROM amd_transaction_records  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
                                     }
 
                                     $query_run = mysqli_query($conn, $query);
@@ -149,54 +133,35 @@ include("db_connection.php");
                                         <?php
                                             } ?> duration-300 ease-in-out hover:bg-gray-200">
                                                 <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
-                                                <td class="text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'];; ?>
-                                                </td>
+
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['gender']; ?>
-                                                </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['age'] . " Years"; ?>
-                                                </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['selected_car']; ?>
-                                                </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['phone_number']; ?>
-                                                </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['fees_paid']; ?>
-                                                </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['total_fees']; ?>
-                                                </td>
-                                                <!-- <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= date("g:i a", strtotime($row['session_start_time'])); ?>
-                                                </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= date("g:i a", strtotime($row['session_end_time'])); ?>
-                                                </td>
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= date("d M Y", strtotime($row['registration_date'])); ?>
-                                                </td> -->
-                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?php if ($row['status'] == 'Completed') {
+                                                    <?php if ($row['transaction_type'] == 'CREDIT') {
                                                     ?>
-                                                        <a class="bg-green-400 text-white rounded px-4 py-1">Completed</a>
+                                                        <a class="bg-green-400 text-white rounded px-4 py-1">Credited</a>
                                                     <?php
-                                                    } else if ($row['status'] == 'In Progress') {
+                                                    } else {
                                                     ?>
-                                                        <a class="bg-yellow-400 text-white rounded px-4 py-1">In Progress</a>
-                                                    <?php
-                                                    } else if ($row['status'] == 'Pending') {
-                                                    ?>
-                                                        <a class="bg-orange-400 text-white rounded px-4 py-1">Pending</a>
+                                                        <a class="bg-red-400 text-white rounded px-4 py-1">Debited</a>
                                                     <?php
                                                     } ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <a href="student_registration_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
-                                                    <a href="student_record_details.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Details</a>
+                                                    <?= $row['given_by']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= $row['given_to']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= "₹ " . $row['transaction_amount']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= date("d M Y", strtotime($row['transaction_date'])); ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <?= $row['transaction_desc']; ?>
+                                                </td>
+                                                <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
+                                                    <a href="transaction_delete.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-red-500 rounded px-3 py-1 hover:underline" onclick='return checkDelete()'>Delete</a>
                                                 </td>
                                             </tr>
                                         <?php
@@ -314,7 +279,11 @@ include("db_connection.php");
     </section>
 </body>
 
-
+<script>
+    function checkDelete() {
+        return confirm('Are you sure you want to delete this transaction record ?');
+    }
+</script>
 
 </html>
 
