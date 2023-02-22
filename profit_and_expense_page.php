@@ -46,7 +46,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Dashboard</title>
+    <title>Financial Overview</title>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -58,6 +58,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
 
 <body>
     <section class="text-gray-600 body-font">
+
         <div class="container bg-yellow-100 px-12 py-12 mx-auto">
             <div class="flex flex-wrap w-full ">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
@@ -76,19 +77,44 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                 <a href="transaction_records.php"><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Overview Transactions</button></a>
             </div>
         </div>
-        <div class="container px-12 mt-12 mb-12 mx-auto">
+
+        <div class="container px-12  mx-auto">
+            <form action="" method="GET">
+                <div class="px-8 py-2 flex items-center justify-start ">
+                    <div class="flex">
+                        <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="fromdate" value="<?php if (isset($_GET['fromdate'])) {
+                                                                                                                                            echo $_GET['fromdate'];
+                                                                                                                                        } ?>" class="px-4 py-2 w-80 mr-2 font-medium border-2 border-gray-200 rounded" placeholder="From Date">
+                        <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="todate" value="<?php if (isset($_GET['todate'])) {
+                                                                                                                                            echo $_GET['todate'];
+                                                                                                                                        } ?>" class="px-4 py-2 w-80 font-medium border-2 border-gray-200 rounded" placeholder="To Date">
+                        <button class="px-4 text-white rounded ml-4 hover:bg-gray-500 bg-gray-400">
+                            Filter
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="flex container px-12 mt-12 mb-12 mx-auto">
             <?php
             if (
-                $sum_of_training != 0 && $sum_of_requests != 0 && $sum_of_fuel != 0
-                && $sum_of_maintainence != 0 && $sum_of_salary != 0
+                $sum_of_training != 0 &&
+                $sum_of_requests != 0 &&
+                $sum_of_fuel != 0
+                && $sum_of_maintainence != 0 &&
+                $sum_of_salary != 0 &&
+                $sum_of_credited_transactions != 0 &&
+                $sum_of_debited_transactions != 0
             ) {
             ?>
-                <div id="myfirstchart" style="height: 250px;"></div>
+                <div id="myfirstchart" class="w-1/2" style="height: 400px;"></div>
             <?php
             }
             ?>
-            <div class="flex flex-wrap w-full mb-10">
-                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+
+            <div class="flex flex-wrap w-1/2 mb-10">
+                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #03C988">
@@ -100,7 +126,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <p class="leading-relaxed font-medium text-xs">Total Revenue From Training</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #03C988">
@@ -112,7 +138,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <p class="leading-relaxed font-medium text-xs">Total Revenue From Customer Requests</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #DD5353">
@@ -124,7 +150,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <p class="leading-relaxed font-medium text-xs">Total Expense on Fuel Consumption</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #DD5353">
@@ -136,7 +162,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <p class="leading-relaxed font-medium text-xs">Total Expense on Car Maintainence</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #DD5353">
@@ -148,7 +174,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <p class="leading-relaxed font-medium text-xs">Total Staff Salary Given</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #03C988">
@@ -160,7 +186,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <p class="leading-relaxed font-medium text-xs">Total Amount of Credited Transactions</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #DD5353">
@@ -172,7 +198,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <p class="leading-relaxed font-medium text-xs">Total Amount of Debited Transactions</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #03C988">
@@ -185,6 +211,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 </body>
 <style>
@@ -198,7 +225,6 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
     new Morris.Donut({
         // ID of the element in which to draw the chart.
         element: 'myfirstchart',
-
         data: [{
                 label: "Training",
                 value: <?= $sum_of_training ?>
@@ -221,21 +247,21 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
             },
             {
                 label: "Credited",
-                value: <?= 20 ?>
+                value: <?= $sum_of_credited_transactions ?>
             },
             {
                 label: "Debited",
-                value: <?= 20 ?>
+                value: <?= $sum_of_debited_transactions ?>
             }
         ],
         colors: [
-            '#AACB73',
-            '#FF7B54',
-            '#FF0032',
-            '#FBC252',
-            '#26C6DA',
-            '#FBCEC6',
-            '#FB1252'
+            '#95BDFF',
+            '#F0A04B',
+            '#000000',
+            '#F9F54B',
+            '#BEF0CB',
+            '#1F8A70',
+            '#D61355'
         ],
         labels: ['Value']
     });
