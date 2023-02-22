@@ -150,7 +150,7 @@ session_start();
                                                     <?= $row['vendor_name']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['bill_amount']; ?>
+                                                    <?= "₹ " . number_format($row['bill_amount']); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['vehicle_number']; ?>
@@ -159,10 +159,10 @@ session_start();
                                                     <?= date("d M Y", strtotime($row['servicing_date'])); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['service_km'] . ' Km'; ?>
+                                                    <?= number_format($row['service_km']) . ' Km'; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['next_service_km'] . ' Km'; ?>
+                                                    <?= number_format($row['next_service_km']) . ' Km'; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['mobile_number']; ?>

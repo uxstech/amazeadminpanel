@@ -24,7 +24,17 @@ $result_of_salary = mysqli_query($conn, "SELECT SUM(salary_amount) AS value_sum_
 $row_of_salary = mysqli_fetch_assoc($result_of_salary);
 $sum_of_salary = $row_of_salary['value_sum_of_salary'];
 
-$overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_of_maintainence + $sum_of_salary);
+
+$result_of_credited_transactions = mysqli_query($conn, "SELECT SUM(transaction_amount) AS value_sum_of_credited_transactions FROM amd_transaction_records WHERE transaction_type = 'CREDIT' AND created_by ='$branchName'");
+$row_of_credited_transactions = mysqli_fetch_assoc($result_of_credited_transactions);
+$sum_of_credited_transactions = $row_of_credited_transactions['value_sum_of_credited_transactions'];
+
+$result_of_debited_transactions = mysqli_query($conn, "SELECT SUM(transaction_amount) AS value_sum_of_debited_transactions FROM amd_transaction_records WHERE transaction_type = 'DEBIT' AND created_by ='$branchName'");
+$row_of_debited_transactions = mysqli_fetch_assoc($result_of_debited_transactions);
+$sum_of_debited_transactions = $row_of_debited_transactions['value_sum_of_debited_transactions'];
+
+
+$overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transactions) - ($sum_of_fuel + $sum_of_maintainence + $sum_of_salary + $sum_of_debited_transactions);
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +88,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
             }
             ?>
             <div class="flex flex-wrap w-full mb-10">
-                <div class="p-1 md:w-1/3 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #03C988">
@@ -87,10 +97,10 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Revenue From Training</p>
+                        <p class="leading-relaxed font-medium text-xs">Total Revenue From Training</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/3 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #03C988">
@@ -99,10 +109,10 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Revenue From Customer Requests</p>
+                        <p class="leading-relaxed font-medium text-xs">Total Revenue From Customer Requests</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/3 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #DD5353">
@@ -111,10 +121,10 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Expense on Fuel Consumption</p>
+                        <p class="leading-relaxed font-medium text-xs">Total Expense on Fuel Consumption</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/3 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #DD5353">
@@ -123,10 +133,10 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Expense on Car Maintainence</p>
+                        <p class="leading-relaxed font-medium text-xs">Total Expense on Car Maintainence</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/3 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #DD5353">
@@ -135,10 +145,34 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Staff Salary Given</p>
+                        <p class="leading-relaxed font-medium text-xs">Total Staff Salary Given</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/3 sm:w-1/2 w-full">
+                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
+                        <h2 class="title-font font-medium text-xl text-gray-900">
+                            <span style="color: #03C988">
+                                <b>
+                                    <p class="counter">₹ <?= number_format($sum_of_credited_transactions) ?></p>
+                                </b>
+                            </span>
+                        </h2>
+                        <p class="leading-relaxed font-medium text-xs">Total Amount of Credited Transactions</p>
+                    </div>
+                </div>
+                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
+                        <h2 class="title-font font-medium text-xl text-gray-900">
+                            <span style="color: #DD5353">
+                                <b>
+                                    <p class="counter">₹ <?= number_format($sum_of_debited_transactions) ?></p>
+                                </b>
+                            </span>
+                        </h2>
+                        <p class="leading-relaxed font-medium text-xs">Total Amount of Debited Transactions</p>
+                    </div>
+                </div>
+                <div class="p-1 md:w-1/4 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #03C988">
@@ -147,7 +181,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Overall Revenue</p>
+                        <p class="leading-relaxed font-medium text-xs">Overall Revenue</p>
                     </div>
                 </div>
             </div>
@@ -161,7 +195,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
     }
 </style>
 <script>
-    new Morris.Donut({
+    new Morris.Area({
         // ID of the element in which to draw the chart.
         element: 'myfirstchart',
 
@@ -184,6 +218,14 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
             {
                 label: "Salary",
                 value: <?= $sum_of_salary ?>
+            },
+            {
+                label: "Credited",
+                value: <?= 20 ?>
+            },
+            {
+                label: "Debited",
+                value: <?= 20 ?>
             }
         ],
         colors: [
@@ -191,7 +233,9 @@ $overall_profit = ($sum_of_training + $sum_of_requests) - ($sum_of_fuel + $sum_o
             '#FF7B54',
             '#FF0032',
             '#FBC252',
-            '#26C6DA'
+            '#26C6DA',
+            '#FBCEC6',
+            '#FB1252'
         ],
         labels: ['Value']
     });

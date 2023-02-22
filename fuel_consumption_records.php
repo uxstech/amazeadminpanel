@@ -150,16 +150,16 @@ session_start();
                                                     <?= $row['filled_fuel_in_ltr_or_kg']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['amount']; ?>
+                                                    <?= "₹ " . number_format($row['amount']); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("d M Y", strtotime($row['on_date'])); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['meter_before'] . " Km"; ?>
+                                                    <?= number_format($row['meter_before']) . " Km"; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= $row['meter_after'] . " Km"; ?>
+                                                    <?= number_format($row['meter_after']) . " Km"; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['fueled_by_coach']; ?>

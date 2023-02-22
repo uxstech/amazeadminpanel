@@ -141,7 +141,7 @@ session_start();
                                                     <?= date("d M Y", strtotime($row['salary_date'])); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['salary_amount']; ?>
+                                                    <?= "₹ " . number_format($row['salary_amount']); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= $row['staff_present_days'] . " Days"; ?>

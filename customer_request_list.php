@@ -143,10 +143,10 @@ session_start();
                                                     <?= $row['mobile_number']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['fees_paid']; ?>
+                                                    <?= "₹ " . number_format($row['fees_paid']); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['total_fees']; ?>
+                                                    <?= "₹ " . number_format($row['total_fees']); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("d M Y", strtotime($row['request_date'])); ?>
