@@ -42,9 +42,9 @@ session_start();
             <form action="" method="GET">
                 <div class="flex items-center justify-start ">
                     <div class="flex border-4 border-gray-200 rounded">
-                        <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
-                                                                    echo $_GET['search'];
-                                                                } ?>" class="px-4 py-2 w-80 font-medium" placeholder="Search Record">
+                        <input type="text" required name="search" value="<?php if (isset($_GET['search'])) {
+                                                                                echo $_GET['search'];
+                                                                            } ?>" class="px-4 py-2 w-80 font-medium" placeholder="Search Record">
                         <button class="px-4 text-white hover:bg-gray-500 bg-gray-400">
                             Search
                         </button>

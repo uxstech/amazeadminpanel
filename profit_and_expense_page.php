@@ -82,12 +82,12 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
             <form action="" method="GET">
                 <div class="px-8 py-2 flex items-center justify-start ">
                     <div class="flex">
-                        <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="fromdate" value="<?php if (isset($_GET['fromdate'])) {
-                                                                                                                                            echo $_GET['fromdate'];
-                                                                                                                                        } ?>" class="px-4 py-2 w-80 mr-2 font-medium border-2 border-gray-200 rounded" placeholder="From Date">
-                        <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="todate" value="<?php if (isset($_GET['todate'])) {
-                                                                                                                                            echo $_GET['todate'];
-                                                                                                                                        } ?>" class="px-4 py-2 w-80 font-medium border-2 border-gray-200 rounded" placeholder="To Date">
+                        <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="fromdate" value="<?php if (isset($_GET['fromdate'])) {
+                                                                                                                                                        echo $_GET['fromdate'];
+                                                                                                                                                    } ?>" class="px-4 py-2 w-80 mr-2 font-medium border-2 border-gray-200 rounded" placeholder="From Date">
+                        <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="todate" value="<?php if (isset($_GET['todate'])) {
+                                                                                                                                                    echo $_GET['todate'];
+                                                                                                                                                } ?>" class="px-4 py-2 w-80 font-medium border-2 border-gray-200 rounded" placeholder="To Date">
                         <button class="px-4 text-white rounded ml-4 hover:bg-gray-500 bg-gray-400">
                             Filter
                         </button>
@@ -96,7 +96,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
             </form>
         </div>
 
-        <div class="flex container px-12 mt-12 mb-12 mx-auto">
+        <div class="flex container px-12 mt-12 mx-auto">
             <?php
             if (
                 $sum_of_training != 0 &&
@@ -113,7 +113,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
             }
             ?>
 
-            <div class="flex flex-wrap w-1/2 mb-10">
+            <div class="flex flex-wrap w-1/2">
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
@@ -123,7 +123,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-xs">Total Revenue From Training</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Revenue From Training</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -135,7 +135,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-xs">Total Revenue From Customer Requests</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Revenue From Customer Requests</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -147,7 +147,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-xs">Total Expense on Fuel Consumption</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Expense on Fuel Consumption</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -159,7 +159,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-xs">Total Expense on Car Maintainence</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Expense on Car Maintainence</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -171,7 +171,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-xs">Total Staff Salary Given</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Staff Salary Given</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -183,7 +183,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-xs">Total Amount of Credited Transactions</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Amount of Credited Transactions</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -195,7 +195,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-xs">Total Amount of Debited Transactions</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Amount of Debited Transactions</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -207,7 +207,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-xs">Overall Revenue</p>
+                        <p class="leading-relaxed font-medium text-sm">Overall Revenue</p>
                     </div>
                 </div>
             </div>
@@ -225,6 +225,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
     new Morris.Donut({
         // ID of the element in which to draw the chart.
         element: 'myfirstchart',
+        backgroundColor: '#000',
         data: [{
                 label: "Training",
                 value: <?= $sum_of_training ?>
