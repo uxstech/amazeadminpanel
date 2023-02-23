@@ -207,7 +207,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Overall Revenue</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Profit</p>
                     </div>
                 </div>
             </div>
