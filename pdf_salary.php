@@ -49,7 +49,7 @@ $pdf->Cell(90, 15, 'Date', 1, 0, 'C');
 $pdf->Cell(90, 15, date("d M Y", strtotime($row['salary_date'])), 1, 1, 'C');
 
 $pdf->Cell(90, 15, 'Salary', 1, 0, 'C');
-$pdf->Cell(90, 15, "Rupees " . $row['salary_amount'], 1, 1, 'C');
+$pdf->Cell(90, 15, number_format($row['salary_amount']), 1, 1, 'C');
 
 $pdf->Cell(90, 15, 'Present Days', 1, 0, 'C');
 $pdf->Cell(90, 15, $row['staff_present_days'] . " Days", 1, 1, 'C');
