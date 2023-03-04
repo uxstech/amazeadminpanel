@@ -145,7 +145,7 @@ include("db_connection.php");
                                     ?>
                                             <tr class="border-b transition 
                                         <?php if ($index % 2 == 0) { ?>
-                                        bg-gray-100
+                                        bg-gray-50
                                         <?php
                                             } ?> duration-300 ease-in-out hover:bg-gray-200">
                                                 <td class="border px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500"><?= $offset + $index ?></td>
