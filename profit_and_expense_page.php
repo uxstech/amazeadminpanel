@@ -272,13 +272,14 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
 
     #myfirstchart * {
         font-family: open sans;
+        font-size: 28px;
     }
 </style>
 <script>
     new Morris.Donut({
         // ID of the element in which to draw the chart.
         element: 'myfirstchart',
-        backgroundColor: '#000',
+        backgroundColor: '#EEEEE',
         data: [{
                 label: "Training",
                 value: <?= $sum_of_training ?>
