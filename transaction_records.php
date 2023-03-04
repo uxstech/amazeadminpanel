@@ -152,7 +152,7 @@ session_start();
                                                     <?= $row['given_to']; ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
-                                                    <?= "₹ " . $row['transaction_amount']; ?>
+                                                    <?= "₹ " . number_format($row['transaction_amount']); ?>
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <?= date("d M Y", strtotime($row['transaction_date'])); ?>
