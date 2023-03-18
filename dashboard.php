@@ -1,5 +1,27 @@
 <?php
 session_start();
+include("db_connection.php");
+$branchName = $_SESSION['branch_name'];
+
+$result_of_training = mysqli_query($conn, "SELECT SUM(fees_paid) AS value_sum_of_training FROM amd_student_registered WHERE created_by ='$branchName'");
+$row_of_training = mysqli_fetch_assoc($result_of_training);
+$sum_of_training = $row_of_training['value_sum_of_training'];
+
+$result_of_requests = mysqli_query($conn, "SELECT SUM(fees_paid) AS value_sum_of_requests FROM amd_customer_requests WHERE created_by ='$branchName'");
+$row_of_requests = mysqli_fetch_assoc($result_of_requests);
+$sum_of_requests = $row_of_requests['value_sum_of_requests'];
+
+$result_of_maintainence = mysqli_query($conn, "SELECT SUM(bill_amount) AS value_sum_of_maintainence FROM amd_car_maintainence_record WHERE created_by ='$branchName'");
+$row_of_maintainence = mysqli_fetch_assoc($result_of_maintainence);
+$sum_of_maintainence = $row_of_maintainence['value_sum_of_maintainence'];
+
+$result_of_fuel = mysqli_query($conn, "SELECT SUM(amount) AS value_sum_of_fuel FROM amd_fuel_consumption_records WHERE created_by ='$branchName'");
+$row_of_fuel = mysqli_fetch_assoc($result_of_fuel);
+$sum_of_fuel = $row_of_fuel['value_sum_of_fuel'];
+
+$result_of_salary = mysqli_query($conn, "SELECT SUM(salary_amount) AS value_sum_of_salary FROM amd_salary_records WHERE created_by ='$branchName'");
+$row_of_salary = mysqli_fetch_assoc($result_of_salary);
+$sum_of_salary = $row_of_salary['value_sum_of_salary'];
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +56,7 @@ session_start();
                     </div>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
                     <p class="mt-4 text-sm font-medium text-gray-900">Welcome, <?php
-                                                                                $branchName = str_replace("_", " ", $_SESSION['branch_name']);
+                                                                                $branchName = str_replace("_", " ", $branchName);
                                                                                 echo ucwords(strtolower($branchName));
                                                                                 ?></p>
                 </div>
@@ -53,8 +75,14 @@ session_start();
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img class="lg:h-48 md:h-36 w-full" src="assets/student_registration.svg" alt="blog">
                         <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Customer Requests</h1>
+                            <h2 class="text-xl title-font font-medium text-gray-400">
+                                <span style="color: #03C988">
+                                    <b>
+                                        <p class="counter">₹ <?= number_format($sum_of_requests) ?></p>
+                                    </b>
+                                </span>
+                            </h2>
+                            <h1 class="title-font text-md font-medium text-gray-900">Customer Requests</h1>
                             <p class="leading-relaxed mb-3 text-sm text-sm font-medium">Here you can manage all the customer requests and keep the track of it to get it done as soon as possible.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="customer_request_list.php">Continue
@@ -71,8 +99,16 @@ session_start();
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img class="lg:h-48 md:h-36 w-full" src="assets/analysys.svg" alt="blog">
                         <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Training Students</h1>
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400">
+                                <h2 class="text-xl title-font font-medium text-gray-400">
+                                    <span style="color: #03C988">
+                                        <b>
+                                            <p class="counter">₹ <?= number_format($sum_of_training) ?></p>
+                                        </b>
+                                    </span>
+                                </h2>
+                            </h2>
+                            <h1 class="title-font text-md font-medium text-gray-900">Training Students</h1>
                             <p class="leading-relaxed mb-3 text-sm font-medium">Here you can manage and keep track of all the students who are registered for driving classes.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="student_detail_list.php?page_no=1">Continue
@@ -89,8 +125,14 @@ session_start();
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img class="lg:h-48 md:h-36 w-full" src="assets/car_maintainence.svg" alt="blog">
                         <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Car Maintainence Records</h1>
+                            <h2 class="text-xl title-font font-medium text-gray-400">
+                                <span style="color: #DD5353">
+                                    <b>
+                                        <p class="counter">₹ <?= number_format($sum_of_maintainence) ?></p>
+                                    </b>
+                                </span>
+                            </h2>
+                            <h1 class="title-font text-md font-medium text-gray-900">Car Maintainence Records</h1>
                             <p class="leading-relaxed mb-3 text-sm font-medium">Here you can overview and add car maintainence records to keep track on expenses on car.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="car_maintainence_records.php">Continue
@@ -107,8 +149,16 @@ session_start();
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img class="lg:h-48 md:h-36 w-full" src="assets/fuel_consumption_entry.svg" alt="blog">
                         <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Fuel Consumption Records</h1>
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400">
+                                <h2 class="text-xl title-font font-medium text-gray-400">
+                                    <span style="color: #DD5353">
+                                        <b>
+                                            <p class="counter">₹ <?= number_format($sum_of_fuel) ?></p>
+                                        </b>
+                                    </span>
+                                </h2>
+                            </h2>
+                            <h1 class="title-font text-md font-medium text-gray-900">Fuel Consumption Records</h1>
                             <p class="leading-relaxed mb-3 text-sm font-medium">Here you can overview and add fuel consumption records to keep track on fuel consumption of each car.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="fuel_consumption_records.php">Continue
@@ -125,8 +175,16 @@ session_start();
                     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                         <img class="lg:h-48 md:h-36 w-full" src="assets/staff_registration.svg" alt="blog">
                         <div class="p-6">
-                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">OVERVIEW</h2>
-                            <h1 class="title-font text-md font-medium text-gray-900 mb-3">Salary Records</h1>
+                            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400">
+                                <h2 class="text-xl title-font font-medium text-gray-400">
+                                    <span style="color: #DD5353">
+                                        <b>
+                                            <p class="counter">₹ <?= number_format($sum_of_salary) ?></p>
+                                        </b>
+                                    </span>
+                                </h2>
+                            </h2>
+                            <h1 class="title-font text-md font-medium text-gray-900">Salary Records</h1>
                             <p class="leading-relaxed mb-3 text-sm font-medium">It helps you to overview and add salary records, also you can track salaries disbursed to staff.</p>
                             <div class="flex items-center flex-wrap ">
                                 <a class="text-yellow-500 text-md font-medium inline-flex items-center md:mb-2 lg:mb-0" href="salary_records.php">Continue

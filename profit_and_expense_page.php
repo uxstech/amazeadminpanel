@@ -106,7 +106,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
 <body>
     <section class="text-gray-600 body-font">
 
-        <div class="container bg-yellow-100 px-12 py-12 mx-auto">
+        <div class="container bg-yellow-100 px-12 py-11 mx-auto">
             <div class="flex flex-wrap w-full ">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <div class="text-center">
@@ -119,9 +119,6 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                     to manage its configurations, settings,
                     content, and features and carry out oversight functions critical to the
                     business.</p>
-            </div>
-            <div class="flex items-center justify-end -mt-10">
-                <a href="transaction_records.php"><button name="logout" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Overview Transactions</button></a>
             </div>
         </div>
 
@@ -180,7 +177,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                     }
                     ?>
                 </div>
-                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
+                <!-- <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <span style="color: #03C988">
@@ -239,7 +236,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         </h2>
                         <p class="leading-relaxed font-medium text-sm">Total Staff Salary Given</p>
                     </div>
-                </div>
+                </div> -->
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
@@ -249,7 +246,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Amount of Credited Transactions</p>
+                        <p class="leading-relaxed font-medium text-sm">Total amount of credited transactions</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -261,10 +258,15 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Amount of Debited Transactions</p>
+                        <p class="leading-relaxed font-medium text-sm">Total amount of debited transactions</p>
                     </div>
                 </div>
-                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
+                <div class="p-1 md:w-full sm:w-1/2 w-full">
+                    <div class="flex items-center justify-end">
+                        <a href="transaction_records.php"><button name="transactions" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Overview all transactions</button></a>
+                    </div>
+                </div>
+                <div class="p-1 md:w-full sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <?php
@@ -287,7 +289,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                             }
                             ?>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Profit</p>
+                        <p class="leading-relaxed font-medium text-sm">Total profit after calculating all incomes and expenses from all categories</p>
                     </div>
                 </div>
             </div>
@@ -299,7 +301,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
 
     #myfirstchart * {
         font-family: open sans;
-        font-size: 28px;
+        font-size: 20px;
     }
 </style>
 <script>
@@ -308,31 +310,31 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
         element: 'myfirstchart',
         backgroundColor: '#EEEEE',
         data: [{
-                label: "Training",
+                label: "Training (+)",
                 value: <?= $sum_of_training ?>
             },
             {
-                label: "Customers",
+                label: "Customers (+)",
                 value: <?= $sum_of_requests ?>
             },
             {
-                label: "Fuel",
+                label: "Fuel (-)",
                 value: <?= $sum_of_fuel ?>
             },
             {
-                label: "Car",
+                label: "Car (-)",
                 value: <?= $sum_of_maintainence ?>
             },
             {
-                label: "Salary",
+                label: "Salary (-)",
                 value: <?= $sum_of_salary ?>
             },
             {
-                label: "Credited",
+                label: "Credited (+)",
                 value: <?= $sum_of_credited_transactions ?>
             },
             {
-                label: "Debited",
+                label: "Debited (-)",
                 value: <?= $sum_of_debited_transactions ?>
             }
         ],
