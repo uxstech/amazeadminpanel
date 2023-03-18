@@ -42,10 +42,10 @@ session_start();
             <form action="" method="GET">
                 <div class="flex items-center justify-start ">
                     <div class="flex border-4 border-gray-200 rounded">
-                        <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
-                                                                    echo $_GET['search'];
-                                                                } ?>" class="px-4 py-2 w-80 font-medium" placeholder="Search Record">
-                        <button class="px-4 text-white hover:bg-gray-500 bg-gray-400">
+                        <input type="text" required name="search" value="<?php if (isset($_GET['search'])) {
+                                                                                echo $_GET['search'];
+                                                                            } ?>" class="px-4 py-2 w-80 font-medium" placeholder="Search Record">
+                        <button class="px-4 text-white hover:bg-gray-500 bg-gray-700">
                             Search
                         </button>
                     </div>
@@ -61,30 +61,30 @@ session_start();
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
                             <table class="table-fixed min-w-full">
-                                <thead class="bg-white border-b">
-                                    <tr class="bg-gray-100">
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                <thead class="bg-white border">
+                                    <tr class="bg-gray-700">
+                                        <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Sr.No
                                         </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Type
                                         </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Payer
                                         </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Receiver
                                         </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Amount
                                         </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Date
                                         </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Reason
                                         </th>
-                                        <th scope="col" class="border text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Action
                                         </th>
                                     </tr>
@@ -99,7 +99,7 @@ session_start();
                                         $page_no = 1;
                                     }
 
-                                    $total_records_per_page = 10;
+                                    $total_records_per_page = 20;
                                     $offset = ($page_no - 1) * $total_records_per_page;
                                     $previous_page = $page_no - 1;
                                     $next_page = $page_no + 1;

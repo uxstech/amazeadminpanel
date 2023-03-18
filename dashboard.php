@@ -48,7 +48,7 @@ $sum_of_salary = $row_of_salary['value_sum_of_salary'];
 
 <body>
     <section class="text-gray-600 body-font">
-        <div class="container bg-yellow-100 px-12 py-12 mx-auto">
+        <div class="container px-12 py-12 mx-auto">
             <div class="flex flex-wrap w-full ">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                     <div class="text-center">
@@ -217,7 +217,7 @@ $sum_of_salary = $row_of_salary['value_sum_of_salary'];
                 </div>
             </div>
         </div>
-        <div class="container bg-yellow-100 px-12 py-4 mx-auto">
+        <div class="container px-12 py-4 mx-auto">
             <footer class="text-center text-xs lg:text-left">
                 <div class="text-gray-500 font-medium text-left p-2">
                     © 2023 Copyright: Amaze motor driving school, panel designed & developed by uxstechnologies

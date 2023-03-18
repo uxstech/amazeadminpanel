@@ -82,6 +82,16 @@ $row_of_debited_transactions = mysqli_fetch_assoc($result_of_debited_transaction
 $sum_of_debited_transactions = $row_of_debited_transactions['value_sum_of_debited_transactions'];
 
 $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transactions) - ($sum_of_fuel + $sum_of_maintainence + $sum_of_salary + $sum_of_debited_transactions);
+
+$dataPoints = array(
+    array("label" => "Income from training", "y" => $sum_of_training),
+    array("label" => "Income from customer requests", "y" => $sum_of_requests),
+    array("label" => "Expense on car maintainence", "y" => $sum_of_maintainence),
+    array("label" => "Expense on staff salary", "y" => $sum_of_salary),
+    array("label" => "Other credited transactions", "y" => $sum_of_credited_transactions),
+    array("label" => "Other debited transactions", "y" => $sum_of_debited_transactions)
+)
+
 ?>
 
 <!DOCTYPE html>
@@ -93,27 +103,18 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <title>Financial Overview</title>
-
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
 <body>
     <section class="text-gray-600 body-font">
-
-        <div class="container bg-yellow-100 px-12 py-11 mx-auto">
-            <div class="flex flex-wrap w-full ">
+        <div class="container px-12 py-11 mx-auto">
+            <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <div class="text-center">
-                        <img class="w-36 mb-4" src="assets/amazenewlogo.svg" alt="logo" />
-                    </div>
+                    <p class="mb-4 text-md font-medium text-gray-900">Revenue Overview</p>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
-                    <p class="mt-4 text-sm font-medium text-gray-900">Net Profit & Expense Overview</p>
                 </div>
                 <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
                     to manage its configurations, settings,
@@ -124,7 +125,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
 
         <div class="container px-12  mx-auto">
             <form action="" method="GET">
-                <div class="px-8 py-2 flex items-center justify-start ">
+                <div class="py-2 flex items-center justify-start ">
                     <div class="flex">
                         <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="fromdate" value="<?php if (isset($_GET['fromdate'])) {
                                                                                                                                                         echo $_GET['fromdate'];
@@ -132,7 +133,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="todate" value="<?php if (isset($_GET['todate'])) {
                                                                                                                                                     echo $_GET['todate'];
                                                                                                                                                 } ?>" class="px-4 py-2 w-80 font-medium border-2 border-gray-200 rounded" placeholder="To Date">
-                        <button class="px-4 text-white rounded ml-4 hover:bg-gray-500 bg-gray-400">
+                        <button class="px-4 text-white rounded ml-4 hover:bg-gray-500 bg-gray-700">
                             Filter
                         </button>
                     </div>
@@ -141,102 +142,23 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
         </div>
 
         <div class="flex container px-12 mt-12 mx-auto">
-            <?php
-            if (
-                $sum_of_training != 0 &&
-                $sum_of_requests != 0 &&
-                $sum_of_fuel != 0
-                && $sum_of_maintainence != 0 &&
-                $sum_of_salary != 0 &&
-                $sum_of_credited_transactions != 0 &&
-                $sum_of_debited_transactions != 0
-            ) {
-            ?>
-                <div id="myfirstchart" class="w-1/2" style="height: 400px;"></div>
-            <?php
-            } else {
-            ?>
-                <div id="myfirstchart" class="px-8 w-1/2 grid grid-cols-3 gap-4 place-items-center" style="height: 400px;">
-                    <p>Can't load chart untill all values are non-zero</p>
-                </div>
-            <?php
-            }
-            ?>
+
+            <div id="chartContainer" class="w-1/2" style="height: 400px;"></div>
 
             <div class="flex flex-wrap w-1/2">
                 <div class="md:w-full text-center -mt-10">
                     <?php
                     if (isset($_GET['fromdate']) && isset($_GET['todate'])) {
                     ?>
-                        <p class="text-xl font-medium">Report Statistics from <span style="color: #F7C04A; font-weight: bold;"><?= date("d M Y", strtotime($_GET['fromdate'])); ?></span> to <span style="color: #F7C04A; font-weight: bold;"><?= date("d M Y", strtotime($_GET['todate'])); ?></span></p>
+                        <p class="text-xl font-medium">Report statistics from <span style="color: #F7C04A; font-weight: bold;"><?= date("d M Y", strtotime($_GET['fromdate'])); ?></span> to <span style="color: #F7C04A; font-weight: bold;"><?= date("d M Y", strtotime($_GET['todate'])); ?></span></p>
                     <?php
                     } else {
                     ?>
-                        <p class="text-xl font-medium">Overall Report</p>
+                        <p class="text-xl font-medium">Overall report since establishment</p>
                     <?php
                     }
                     ?>
                 </div>
-                <!-- <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
-                        <h2 class="title-font font-medium text-xl text-gray-900">
-                            <span style="color: #03C988">
-                                <b>
-                                    <p class="counter">₹ <?= number_format($sum_of_training) ?></p>
-                                </b>
-                            </span>
-                        </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Income From Training</p>
-                    </div>
-                </div>
-                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
-                        <h2 class="title-font font-medium text-xl text-gray-900">
-                            <span style="color: #03C988">
-                                <b>
-                                    <p class="counter">₹ <?= number_format($sum_of_requests) ?></p>
-                                </b>
-                            </span>
-                        </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Income From Customer Requests</p>
-                    </div>
-                </div>
-                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
-                        <h2 class="title-font font-medium text-xl text-gray-900">
-                            <span style="color: #DD5353">
-                                <b>
-                                    <p class="counter">₹ <?= number_format($sum_of_fuel) ?></p>
-                                </b>
-                            </span>
-                        </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Expense on Fuel Consumption</p>
-                    </div>
-                </div>
-                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
-                        <h2 class="title-font font-medium text-xl text-gray-900">
-                            <span style="color: #DD5353">
-                                <b>
-                                    <p class="counter">₹ <?= number_format($sum_of_maintainence) ?></p>
-                                </b>
-                            </span>
-                        </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Expense on Car Maintainence</p>
-                    </div>
-                </div>
-                <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
-                        <h2 class="title-font font-medium text-xl text-gray-900">
-                            <span style="color: #DD5353">
-                                <b>
-                                    <p class="counter">₹ <?= number_format($sum_of_salary) ?></p>
-                                </b>
-                            </span>
-                        </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Staff Salary Given</p>
-                    </div>
-                </div> -->
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
@@ -262,12 +184,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                     </div>
                 </div>
                 <div class="p-1 md:w-full sm:w-1/2 w-full">
-                    <div class="flex items-center justify-end">
-                        <a href="transaction_records.php"><button name="transactions" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Overview all transactions</button></a>
-                    </div>
-                </div>
-                <div class="p-1 md:w-full sm:w-1/2 w-full">
-                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
+                    <div class="border-2 border-gray-200 px-4 py-6 rounded-md -mt-12">
                         <h2 class="title-font font-medium text-xl text-gray-900">
                             <?php
                             if (number_format($overall_profit) > 0) {
@@ -292,63 +209,35 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                         <p class="leading-relaxed font-medium text-sm">Total profit after calculating all incomes and expenses from all categories</p>
                     </div>
                 </div>
+                <div class="p-1 md:w-full sm:w-1/2 w-full -mt-10">
+                    <div class="flex items-center justify-end">
+                        <a href="transaction_records.php"><button name="transactions" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Overview all transactions</button></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </body>
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-    #myfirstchart * {
-        font-family: open sans;
-        font-size: 20px;
-    }
-</style>
 <script>
-    new Morris.Donut({
-        // ID of the element in which to draw the chart.
-        element: 'myfirstchart',
-        backgroundColor: '#EEEEE',
-        data: [{
-                label: "Training (+)",
-                value: <?= $sum_of_training ?>
+    window.onload = function() {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Incomes and expenses"
             },
-            {
-                label: "Customers (+)",
-                value: <?= $sum_of_requests ?>
-            },
-            {
-                label: "Fuel (-)",
-                value: <?= $sum_of_fuel ?>
-            },
-            {
-                label: "Car (-)",
-                value: <?= $sum_of_maintainence ?>
-            },
-            {
-                label: "Salary (-)",
-                value: <?= $sum_of_salary ?>
-            },
-            {
-                label: "Credited (+)",
-                value: <?= $sum_of_credited_transactions ?>
-            },
-            {
-                label: "Debited (-)",
-                value: <?= $sum_of_debited_transactions ?>
-            }
-        ],
-        colors: [
-            '#95BDFF',
-            '#F0A04B',
-            '#000000',
-            '#F9F54B',
-            '#BEF0CB',
-            '#1F8A70',
-            '#D61355'
-        ],
-        labels: ['Value']
-    });
+            subtitles: [{
+                text: "Amaze motor driving school"
+            }],
+            data: [{
+                type: "pie",
+                yValueFormatString: "₹#,##\"\"",
+                indexLabel: "{label} ({y})",
+                dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+            }]
+        });
+        chart.render();
+    }
 </script>
 
 </html>

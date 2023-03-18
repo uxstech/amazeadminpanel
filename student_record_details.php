@@ -53,12 +53,12 @@ if (isset($_GET['id'])) {
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
                             <table class="table-fixed min-w-[100%]">
-                                <thead class="bg-white border-b">
-                                    <tr class="bg-gray-300">
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                <thead class="bg-white border">
+                                    <tr class="bg-gray-700">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Trainee Details
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                         </th>
                                     </tr>
                                 </thead>
@@ -177,39 +177,39 @@ if (isset($_GET['id'])) {
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
                             <table class="table-fixed min-w-[100%]">
-                                <thead class="bg-white border-b">
-                                    <tr class="bg-gray-300">
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                <thead class="bg-white border">
+                                    <tr class="bg-gray-700">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Completed
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Days
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Session Car
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Date
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             From
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             To
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Start Km.
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             End Km.
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Trainer
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Trainer Inputs
                                         </th>
-                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-900 px-6 py-4 text-left">
+                                        <th scope="col" class="border font-medium text-sm leading-relaxed text-gray-100 px-6 py-4 text-left">
                                             Action
                                         </th>
                                     </tr>
