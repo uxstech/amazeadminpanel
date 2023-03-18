@@ -167,6 +167,19 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
             ?>
 
             <div class="flex flex-wrap w-1/2">
+                <div class="md:w-full text-center -mt-10">
+                    <?php
+                    if (isset($_GET['fromdate']) && isset($_GET['todate'])) {
+                    ?>
+                        <p class="text-xl font-medium">Report Statistics from <span style="color: #F7C04A; font-weight: bold;"><?= date("d M Y", strtotime($_GET['fromdate'])); ?></span> to <span style="color: #F7C04A; font-weight: bold;"><?= date("d M Y", strtotime($_GET['todate'])); ?></span></p>
+                    <?php
+                    } else {
+                    ?>
+                        <p class="text-xl font-medium">Overall Report</p>
+                    <?php
+                    }
+                    ?>
+                </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
@@ -176,7 +189,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Revenue From Training</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Income From Training</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -188,7 +201,7 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                                 </b>
                             </span>
                         </h2>
-                        <p class="leading-relaxed font-medium text-sm">Total Revenue From Customer Requests</p>
+                        <p class="leading-relaxed font-medium text-sm">Total Income From Customer Requests</p>
                     </div>
                 </div>
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
@@ -254,11 +267,25 @@ $overall_profit = ($sum_of_training + $sum_of_requests + $sum_of_credited_transa
                 <div class="p-1 md:w-1/2 sm:w-1/2 w-full">
                     <div class="border-2 border-gray-200 px-4 py-6 rounded-md">
                         <h2 class="title-font font-medium text-xl text-gray-900">
-                            <span style="color: #03C988">
-                                <b>
-                                    <p class="counter">₹ <?= number_format($overall_profit) ?></p>
-                                </b>
-                            </span>
+                            <?php
+                            if (number_format($overall_profit) > 0) {
+                            ?>
+                                <span style="color: #03C988">
+                                    <b>
+                                        <p class="counter">₹ <?= number_format($overall_profit) ?></p>
+                                    </b>
+                                </span>
+                            <?php
+                            } else {
+                            ?>
+                                <span style="color: #DD5353">
+                                    <b>
+                                        <p class="counter">₹ <?= number_format($overall_profit) ?></p>
+                                    </b>
+                                </span>
+                            <?php
+                            }
+                            ?>
                         </h2>
                         <p class="leading-relaxed font-medium text-sm">Total Profit</p>
                     </div>
