@@ -10,7 +10,7 @@ if (isset($_POST['fromdate']) && isset($_POST['todate'])) {
     $query = "SELECT * FROM amd_customer_requests  WHERE created_by ='" . $branchName . "'  ORDER BY id DESC";
 }
 $result = mysqli_query($conn, $query);
-$fileName = "customer_requests_data_" . date('Y-m-d') . ".xls";
+$fileName = "$branchName customer_requests_data_" . date('Y-m-d') . ".xls";
 if (mysqli_num_rows($result) > 0) {
     $output .= '
          <table border= "1">

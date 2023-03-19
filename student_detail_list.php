@@ -54,7 +54,22 @@ include("db_connection.php");
                 </div>
             </form>
 
-            <div class="flex items-center justify-end -mt-10 mb-4">
+            <div class="flex items-center justify-end -mt-14 mb-4">
+                <form action="student_details_excel.php" method="POST">
+                    <div class="py-2 flex items-center justify-start ">
+                        <div class="flex">
+                            <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="fromdate" value="<?php if (isset($_POST['fromdate'])) {
+                                                                                                                                                            echo $_POST['fromdate'];
+                                                                                                                                                        } ?>" class="px-4 py-2 w-40 mr-2 font-medium border-2 border-gray-200 rounded" placeholder="From Date">
+                            <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="todate" value="<?php if (isset($_POST['todate'])) {
+                                                                                                                                                        echo $_POST['todate'];
+                                                                                                                                                    } ?>" class="px-4 py-2 w-40 font-medium border-2 border-gray-200 rounded" placeholder="To Date">
+                            <button type="submit" class="px-8 font-medium mr-2 text-sm text-white rounded ml-4 hover:bg-green-900 bg-green-800">
+                                Export XLS
+                            </button>
+                        </div>
+                    </div>
+                </form>
                 <a href="student_registration_form.php"><button name="addstudent" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm">Add Student</button></a>
             </div>
 
@@ -305,7 +320,12 @@ include("db_connection.php");
                                 </div>
                             </div>
                         <?php
+                        } else {
+                        ?>
+                            <button name="ok" class="mt-12 flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 font-medium rounded text-sm" onclick="history.back()">Ok</button>
+                        <?php
                         }
+                        ?>
                         ?>
                     </div>
                 </div>

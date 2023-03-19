@@ -53,11 +53,11 @@ session_start();
                 <form action="customer_request_excel.php" method="POST">
                     <div class="py-2 flex items-center justify-start ">
                         <div class="flex">
-                            <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="fromdate" value="<?php if (isset($_GET['fromdate'])) {
-                                                                                                                                                            echo $_GET['fromdate'];
+                            <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="fromdate" value="<?php if (isset($_POST['fromdate'])) {
+                                                                                                                                                            echo $_POST['fromdate'];
                                                                                                                                                         } ?>" class="px-4 py-2 w-40 mr-2 font-medium border-2 border-gray-200 rounded" placeholder="From Date">
-                            <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="todate" value="<?php if (isset($_GET['todate'])) {
-                                                                                                                                                        echo $_GET['todate'];
+                            <input type="text" required onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" name="todate" value="<?php if (isset($_POST['todate'])) {
+                                                                                                                                                        echo $_POST['todate'];
                                                                                                                                                     } ?>" class="px-4 py-2 w-40 font-medium border-2 border-gray-200 rounded" placeholder="To Date">
                             <button type="submit" class="px-8 font-medium mr-2 text-sm text-white rounded ml-4 hover:bg-green-900 bg-green-800">
                                 Export XLS
