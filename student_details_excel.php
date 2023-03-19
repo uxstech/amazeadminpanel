@@ -62,5 +62,5 @@ if (mysqli_num_rows($result) > 0) {
     header("Content-Disposition: attachment;filename=$fileName.xls");
     echo $output;
 } else {
-    echo "No records found withing given date";
+    echo "No records found within given date";
 }
