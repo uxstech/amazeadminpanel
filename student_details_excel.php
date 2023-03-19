@@ -10,57 +10,68 @@ if (isset($_POST['fromdate']) && isset($_POST['todate'])) {
     $query = "SELECT * FROM amd_student_registered  WHERE created_by ='" . $branchName . "'  ORDER BY id DESC";
 }
 $result = mysqli_query($conn, $query);
-$fileName = "$branchName training_details_data_" . date('Y-m-d') . ".xls";
+$delimiter = ",";
+$filename = strtolower($branchName) . "_training_data_" . date('d-M-Y') . ".csv"; // Create file name
+
 if (mysqli_num_rows($result) > 0) {
-    $output .= '
-         <table border= "1">
-            <tr>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-                <th>Mobile Number</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Registration Date</th>
-                <th>Fees Paid</th>
-                <th>Total Fees</th>
-                <th>Selected Car</th>
-                <th>Session Start Time</th>
-                <th>Session End Time</th>
-                <th>Any Customized Note</th>
-                <th>Gender</th>
-                <th>Age</th>
-                <th>Status</th>
-            </tr>
-    ';
+    //create a file pointer
+    $f = fopen('php://memory', 'w');
+
+    //set column headers
+    $fields = array(
+        'Id',
+        'First Name',
+        'Middle Name',
+        'Last Name',
+        'Mobile Number',
+        'Email',
+        'Address',
+        'Registration Date',
+        'Fees Paid',
+        'Total Fees',
+        'Selected Car',
+        'Session Start Time',
+        'Session End Time',
+        'Any Customized Note',
+        'Gender',
+        'Age',
+        'Status'
+    );
+    fputcsv($f, $fields, $delimiter);
+
+    //output each row of the data, format line as csv and write to file pointer
     while ($row = mysqli_fetch_array($result)) {
-        $output .= '
-            <tr>
-                <td>' . $row["id"] . '</td>
-                <td>' . $row["first_name"] . '</td>
-                <td>' . $row["middle_name"] . '</td>
-                <td>' . $row["last_name"] . '</td>
-                <td>' . $row["phone_number"] . '</td>
-                <td>' . $row["email_id"] . '</td>
-                <td>' . $row["address"] . '</td>
-                <td>' . $row["registration_date"] . '</td>
-                <td>' . $row["fees_paid"] . '</td>
-                <td>' . $row["total_fees"] . '</td>
-                <td>' . $row["selected_car"] . '</td>
-                <td>' . $row["session_start_time"] . '</td>
-                <td>' . $row["session_end_time"] . '</td>
-                <td>' . $row["any_customized_request"] . '</td>
-                <td>' . $row["gender"] . '</td>
-                <td>' . $row["age"] . '</td>
-                <td>' . $row["status"] . '</td>
-            </tr>
-    ';
+        $lineData = array(
+            $row["id"],
+            $row["first_name"],
+            $row["middle_name"],
+            $row["last_name"],
+            "+91 " . $row["phone_number"],
+            $row["email_id"],
+            $row["address"],
+            $row["registration_date"],
+            $row["fees_paid"],
+            $row["total_fees"],
+            $row["selected_car"],
+            $row["session_start_time"],
+            $row["session_end_time"],
+            $row["any_customized_request"],
+            $row["gender"],
+            $row["age"],
+            $row["status"]
+        );
+        fputcsv($f, $lineData, $delimiter);
     }
-    $output .= '</table>';
-    header("Content-Type: application/xls");
-    header("Content-Disposition: attachment;filename=$fileName.xls");
-    echo $output;
+
+    //move back to beginning of file
+    fseek($f, 0);
+
+    //set headers to download file rather than displayed
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="' . $filename . '";');
+
+    //output all remaining data on a file pointer
+    fpassthru($f);
 } else {
     echo "No records found within given date";
 }

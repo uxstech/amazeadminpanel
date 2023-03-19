@@ -10,47 +10,58 @@ if (isset($_POST['fromdate']) && isset($_POST['todate'])) {
     $query = "SELECT * FROM amd_car_maintainence_record  WHERE created_by ='" . $branchName . "'  ORDER BY id DESC";
 }
 $result = mysqli_query($conn, $query);
-$fileName = "$branchName car_maintainence_data_" . date('Y-m-d') . ".xls";
+$delimiter = ",";
+$filename = strtolower($branchName) . "_car_maintainence_" . date('d-M-Y') . ".csv"; // Create file name
+
 if (mysqli_num_rows($result) > 0) {
-    $output .= '
-         <table border= "1">
-            <tr>
-                <th>Id</th>
-                <th>Service of car</th>
-                <th>Service Station Name</th>
-                <th>Bill Number</th>
-                <th>Bill Amount</th>
-                <th>Vehicle Number</th>
-                <th>Servicing Date</th>
-                <th>Next Servicing Date</th>
-                <th>Service done at kilometers</th>
-                <th>Next service at kilometers</th>
-                <th>Service Station Contact Number</th>
-                <th>Service Description</th>
-            </tr>
-    ';
+    //create a file pointer
+    $f = fopen('php://memory', 'w');
+
+    //set column headers
+    $fields = array(
+        'Id',
+        'Service of car',
+        'Service Station Name',
+        'Bill Number',
+        'Bill Amount',
+        'Vehicle Number',
+        'Servicing Date',
+        'Next Servicing Date',
+        'Service done at kilometers',
+        'Next service at kilometers',
+        'Service Station Contact Number',
+        'Service Description'
+    );
+    fputcsv($f, $fields, $delimiter);
+
+    //output each row of the data, format line as csv and write to file pointer
     while ($row = mysqli_fetch_array($result)) {
-        $output .= '
-            <tr>
-                <td>' . $row["id"] . '</td>
-                <td>' . $row["service_of_car"] . '</td>
-                <td>' . $row["vendor_name"] . '</td>
-                <td>' . $row["bill_number"] . '</td>
-                <td>' . $row["bill_amount"] . '</td>
-                <td>' . $row["vehicle_number"] . '</td>
-                <td>' . $row["servicing_date"] . '</td>
-                <td>' . $row["next_servicing_date"] . '</td>
-                <td>' . $row["service_km"] . '</td>
-                <td>' . $row["next_service_km"] . '</td>
-                <td>' . $row["mobile_number"] . '</td>
-                <td>' . $row["job_description"] . '</td>
-            </tr>
-    ';
+        $lineData = array(
+            $row["id"],
+            $row["service_of_car"],
+            $row["vendor_name"],
+            $row["bill_number"],
+            $row["bill_amount"],
+            $row["vehicle_number"],
+            $row["servicing_date"],
+            $row["next_servicing_date"],
+            $row["service_km"],
+            $row["next_service_km"],
+            "+91 " . $row["mobile_number"],
+            $row["job_description"]
+        );
+        fputcsv($f, $lineData, $delimiter);
     }
-    $output .= '</table>';
-    header("Content-Type: application/xls");
-    header("Content-Disposition: attachment;filename=$fileName.xls");
-    echo $output;
+
+    //move back to beginning of file
+    fseek($f, 0);
+
+    //set headers to download file rather than displayed
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="' . $filename . '";');
+
+    //output all remaining data on a file pointer
+    fpassthru($f);
 } else {
     echo "No records found within given date";
 }

@@ -10,39 +10,50 @@ if (isset($_POST['fromdate']) && isset($_POST['todate'])) {
     $query = "SELECT * FROM amd_customer_requests  WHERE created_by ='" . $branchName . "'  ORDER BY id DESC";
 }
 $result = mysqli_query($conn, $query);
-$fileName = "$branchName customer_requests_data_" . date('Y-m-d') . ".xls";
+$delimiter = ",";
+$filename = strtolower($branchName) . "_customer_requests_" . date('d-M-Y') . ".csv"; // Create file name
+
 if (mysqli_num_rows($result) > 0) {
-    $output .= '
-         <table border= "1">
-            <tr>
-                <th>Id</th>
-                <th>Customer Name</th>
-                <th>Work</th>
-                <th>Mobile Number</th>
-                <th>Amount Paid</th>
-                <th>Total Amount</th>
-                <th>Request Date</th>
-                <th>Status</th>
-            </tr>
-    ';
+    //create a file pointer
+    $f = fopen('php://memory', 'w');
+
+    //set column headers
+    $fields = array(
+        'Id',
+        'Customer Name',
+        'Work',
+        'Mobile Number',
+        'Amount Paid',
+        'Total Amount',
+        'Request Date',
+        'Status'
+    );
+    fputcsv($f, $fields, $delimiter);
+
+    //output each row of the data, format line as csv and write to file pointer
     while ($row = mysqli_fetch_array($result)) {
-        $output .= '
-            <tr>
-                <td>' . $row["id"] . '</td>
-                <td>' . $row["customer_name"] . '</td>
-                <td>' . $row["work_description"] . '</td>
-                <td>' . $row["mobile_number"] . '</td>
-                <td>' . $row["fees_paid"] . '</td>
-                <td>' . $row["total_fees"] . '</td>
-                <td>' . $row["request_date"] . '</td>
-                <td>' . $row["status"] . '</td>
-            </tr>
-    ';
+        $lineData = array(
+            $row["id"],
+            $row["customer_name"],
+            $row["work_description"],
+            "+91 " . $row["mobile_number"],
+            $row["fees_paid"],
+            $row["total_fees"],
+            $row["request_date"],
+            $row["status"]
+        );
+        fputcsv($f, $lineData, $delimiter);
     }
-    $output .= '</table>';
-    header("Content-Type: application/xls");
-    header("Content-Disposition: attachment;filename=$fileName.xls");
-    echo $output;
+
+    //move back to beginning of file
+    fseek($f, 0);
+
+    //set headers to download file rather than displayed
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="' . $filename . '";');
+
+    //output all remaining data on a file pointer
+    fpassthru($f);
 } else {
     echo "No records found within given date";
 }
