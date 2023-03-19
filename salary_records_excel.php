@@ -5,13 +5,13 @@ $branchName = $_SESSION['branch_name'];
 if (isset($_POST['fromdate']) && isset($_POST['todate'])) {
     $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
-    $query = "SELECT * FROM amd_fuel_consumption_records  WHERE created_by ='" . $branchName . "'  AND on_date between '$fromdate' AND '$todate' ORDER BY id DESC";
+    $query = "SELECT * FROM amd_salary_records  WHERE created_by ='" . $branchName . "'  AND salary_date between '$fromdate' AND '$todate' ORDER BY id DESC";
 } else {
-    $query = "SELECT * FROM amd_fuel_consumption_records  WHERE created_by ='" . $branchName . "'  ORDER BY id DESC";
+    $query = "SELECT * FROM amd_salary_records  WHERE created_by ='" . $branchName . "'  ORDER BY id DESC";
 }
 $result = mysqli_query($conn, $query);
 $delimiter = ",";
-$filename = strtolower($branchName) . "_fuel_consumption_data_" . date('d-M-Y') . ".csv"; // Create file name
+$filename = strtolower($branchName) . "_salary_data_" . date('d-M-Y') . ".csv"; // Create file name
 
 if (mysqli_num_rows($result) > 0) {
     //create a file pointer
@@ -20,14 +20,12 @@ if (mysqli_num_rows($result) > 0) {
     //set column headers
     $fields = array(
         'Id',
-        'Car',
-        'Fuel Type',
-        'Fuel Ltr/Kg',
-        'Amount Paid',
-        'On Date',
-        'Meter Reading Before',
-        'Meter Reading After',
-        'Fuel Filled By'
+        'Staff Name',
+        'Salary Date',
+        'Salary Amount',
+        'Staff Present Days',
+        'Staff Contact',
+        'Staff Address'
     );
     fputcsv($f, $fields, $delimiter);
 
@@ -35,14 +33,12 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_array($result)) {
         $lineData = array(
             $row["id"],
-            $row["car"],
-            $row["fuel_type"],
-            $row["filled_fuel_in_ltr_or_kg"],
-            $row["amount"],
-            $row["on_date"],
-            $row["meter_before"],
-            $row["meter_after"],
-            $row["fueled_by_coach"]
+            $row["staff_name"],
+            $row["salary_date"],
+            $row["salary_amount"],
+            $row["staff_present_days"],
+            $row["staff_contact"],
+            $row["staff_address"]
         );
         fputcsv($f, $lineData, $delimiter);
     }

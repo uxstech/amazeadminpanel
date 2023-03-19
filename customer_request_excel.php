@@ -11,7 +11,7 @@ if (isset($_POST['fromdate']) && isset($_POST['todate'])) {
 }
 $result = mysqli_query($conn, $query);
 $delimiter = ",";
-$filename = strtolower($branchName) . "_customer_requests_" . date('d-M-Y') . ".csv"; // Create file name
+$filename = strtolower($branchName) . "_customer_requests_data_" . date('d-M-Y') . ".csv"; // Create file name
 
 if (mysqli_num_rows($result) > 0) {
     //create a file pointer
