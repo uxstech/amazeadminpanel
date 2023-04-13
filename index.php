@@ -119,6 +119,7 @@ if (isset($_POST['login'])) {
     if ($total == 1) {
         $_SESSION['user_name'] = $username;
         $_SESSION['branch_name'] = $row["branch_name"];
+        $_SESSION['role'] = $row["role"];
 ?>
         <meta http-equiv="refresh" content="0; url = http://localhost/amazeadminpanel/dashboard.php" />
 <?php
