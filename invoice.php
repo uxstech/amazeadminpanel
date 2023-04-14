@@ -503,8 +503,8 @@ class PDF_Invoice extends FPDF
 					$this->SetXY(37.5, $y);
 					if ($params["remise"] > 0) {
 						if (is_int($params["remise"]))
-							$l_remise = $param["remise"];
-						else
+							//$l_remise = $param["remise"];
+							//else
 							$l_remise = sprintf("%0.2F", $params["remise"]);
 						$this->Cell(14.5, 4, $l_remise, '', '', 'R');
 						$articleHT -= $params["remise"];
