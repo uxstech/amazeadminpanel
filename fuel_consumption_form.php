@@ -52,6 +52,7 @@ session_start();
                                     <option class="font-medium" value="WagonR">WagonR</option>
                                     <option class="font-medium" value="eON">eON</option>
                                     <option class="font-medium" value="Celerio">Celerio (Automatic)</option>
+                                    <option class="font-medium" value="Tiago">Tiago</option>
                                 </select>
                             </div>
                         </div>
@@ -64,6 +65,7 @@ session_start();
                                     <option class="font-medium" value="Petrol">Petrol</option>
                                     <option class="font-medium" value="Diesel">Diesel</option>
                                     <option class="font-medium" value="CNG">CNG</option>
+                                    <option class="font-medium" value="kWh">kWh</option>
                                 </select>
                             </div>
                         </div>

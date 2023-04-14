@@ -81,6 +81,11 @@ if (isset($_GET['id'])) {
                                                                                     echo "selected";
                                                                                 }
                                                                                 ?>>Celerio (Automatic)</option>
+                                    <option class="font-medium" value="Tiago" <?php
+                                                                                if ($result['car'] == "Tiago") {
+                                                                                    echo "selected";
+                                                                                }
+                                                                                ?>>Tiago</option>
                                 </select>
                             </div>
                         </div>
@@ -105,6 +110,11 @@ if (isset($_GET['id'])) {
                                                                                 echo "selected";
                                                                             }
                                                                             ?>>CNG</option>
+                                    <option class="font-medium" value="kWh" <?php
+                                                                            if ($result['fuel_type'] == "kWh") {
+                                                                                echo "selected";
+                                                                            }
+                                                                            ?>>kWh</option>
                                 </select>
                             </div>
                         </div>

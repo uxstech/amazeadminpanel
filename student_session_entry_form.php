@@ -60,6 +60,7 @@ if (isset($_GET['id'])) {
                                     <option class="font-medium" value="WagonR">WagonR</option>
                                     <option class="font-medium" value="eON">eON</option>
                                     <option class="font-medium" value="Celerio">Celerio (Automatic)</option>
+                                    <option class="font-medium" value="Tiago">Tiago</option>
                                 </select>
                             </div>
                         </div>

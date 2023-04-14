@@ -88,7 +88,7 @@ session_start();
                                             Fuel Type
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
-                                            Litre / Kg
+                                            Litre / Kg / kWh
                                         </th>
                                         <th scope="col" class="border text-sm font-medium text-gray-100 px-6 py-4 text-left">
                                             Amount

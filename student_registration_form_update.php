@@ -162,6 +162,11 @@ if (isset($_GET['id'])) {
                                                                                     echo "selected";
                                                                                 }
                                                                                 ?>>Celerio (Automatic)</option>
+                                    <option class="font-medium" value="Tiago" <?php
+                                                                                if ($result['selected_car'] == "Tiago") {
+                                                                                    echo "selected";
+                                                                                }
+                                                                                ?>>Tiago</option>
                                 </select>
                             </div>
                         </div>
