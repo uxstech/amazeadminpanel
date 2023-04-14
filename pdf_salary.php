@@ -1,5 +1,5 @@
 <?php
-require('fpdf/fpdf.php');
+require('invoice.php');
 session_start();
 include("db_connection.php");
 if (isset($_GET['id'])) {
@@ -8,59 +8,48 @@ if (isset($_GET['id'])) {
     $data = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($data);
 }
-class PDF extends FPDF
-{
-    // Page header
-    function Header()
-    {
-        // Logo
-        $this->Image('assets/amazepng.png', 10, 6, 60);
-    }
-
-    // Page footer
-    function Footer()
-    {
-        $this->SetY(-15);
-        $this->SetFont('Helvetica', 'B', 10);
-        $this->SetTextColor(128);
-        $this->Cell(0, 10, 'Amaze Motor Driving School', 0, 0, 'C');
-    }
-}
 
 // Instanciation of inherited class
-$pdf = new PDF();
-$pdf->AliasNbPages();
+$pdf = new PDF_Invoice('P', 'mm', 'A4');
 $pdf->AddPage();
+$pdf->addSociete(
+    "Amaze Motor Driving School",
+    "Head Office:\n224,\n2nd Floor, Gala Magnus,\nSafal Parisar Rd,\nSouth Bopal,\nAhmedabad, Gujarat 380058"
+);
+$pdf->fact_dev("Branch", str_replace("_", " ", $_SESSION['branch_name']));
+$pdf->temporaire("Amaze Motor Driving");
+$pdf->addDate(date("d M Y", strtotime($row['salary_date'])));
+$pdf->addClientAdresse("Contact Details:\n\n+91 92275755667\n+91 7016003600\ninfoamazemotor@gmail.com\nwww.amazemotordriving.com");
 
-$pdf->SetY(50);
-$pdf->SetFont('Helvetica', 'I', 12);
-$pdf->Cell(0, 10, str_replace("_", " ", 'BRANCH : ' . $_SESSION['branch_name']), 0, 1, 'L');
-$pdf->Cell(0, 2, 'STAFF NAME : ' . strtoupper($row['staff_name']), 0, 1, 'L');
-$pdf->Ln(5);
+$pdf->addReference($row['staff_name']);
+$cols = array(
+    "SR NO"          => 16,
+    "STAFF ADDRESS"  => 76,
+    "PRESENT DAYS"   => 32,
+    "CONTACT"        => 36,
+    "SALARY"         => 30
+);
+$pdf->addCols($cols);
+$cols = array(
+    "SR NO"          => "C",
+    "STAFF ADDRESS"  => "L",
+    "PRESENT DAYS"   => "C",
+    "CONTACT"        => "C",
+    "SALARY"         => "C"
+);
+$pdf->addLineFormat($cols);
+$pdf->addLineFormat($cols);
 
-$pdf->SetFont('Helvetica', '', 14);
-$pdf->Cell(90, 15, 'Info', 1, 0, 'C');
-$pdf->Cell(90, 15, 'Values', 1, 1, 'C');
-
-$pdf->Cell(90, 15, 'Name', 1, 0, 'C');
-$pdf->Cell(90, 15, $row['staff_name'], 1, 1, 'C');
-
-$pdf->Cell(90, 15, 'Date', 1, 0, 'C');
-$pdf->Cell(90, 15, date("d M Y", strtotime($row['salary_date'])), 1, 1, 'C');
-
-$pdf->Cell(90, 15, 'Salary', 1, 0, 'C');
-$pdf->Cell(90, 15, number_format($row['salary_amount']), 1, 1, 'C');
-
-$pdf->Cell(90, 15, 'Present Days', 1, 0, 'C');
-$pdf->Cell(90, 15, $row['staff_present_days'] . " Days", 1, 1, 'C');
-
-$pdf->Cell(90, 15, 'Contact No', 1, 0, 'C');
-$pdf->Cell(90, 15, $row['staff_contact'], 1, 1, 'C');
-
-$pdf->Image('assets/certified.png', 130, 220, 50);
-$pdf->SetFont('Helvetica', 'I', 10);
-$pdf->SetTextColor(255, 0, 0);
-$pdf->Ln(10);
-$pdf->Cell(90, 10, 'This is computer generated statement and does not require any signature or a seal', 0, 1, 'L');
-$pdf->Cell(90, 0, '*This document is strictly confidential', 0, 1, 'L');
+$y    = 109;
+$line = array(
+    "SR NO"             => "1",
+    "STAFF ADDRESS"     => $row['staff_address'],
+    "PRESENT DAYS"      => $row['staff_present_days'] . " Days",
+    "CONTACT"           => "+91 " . $row['staff_contact'],
+    "SALARY"            => number_format($row['salary_amount']) . ".00"
+);
+$size = $pdf->addLine($y, $line);
+$y   += $size + 2;
+$pdf->addRemarque("Copyright 2023 Amaze Motor Driving School");
+$pdf->addCadreEurosFrancs();
 $pdf->Output();
