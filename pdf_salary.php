@@ -40,7 +40,7 @@ $cols = array(
 $pdf->addLineFormat($cols);
 $pdf->addLineFormat($cols);
 
-$y    = 109;
+$y    = 115;
 $line = array(
     "SR NO"             => "1",
     "STAFF ADDRESS"     => $row['staff_address'],
@@ -50,6 +50,6 @@ $line = array(
 );
 $size = $pdf->addLine($y, $line);
 $y   += $size + 2;
-$pdf->addRemarque("Copyright 2023 Amaze Motor Driving School");
+$pdf->addRemarque("Thank you for your hardwork and dedication");
 $pdf->addCadreEurosFrancs();
 $pdf->Output();

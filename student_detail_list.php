@@ -212,6 +212,7 @@ include("db_connection.php");
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <a href="student_registration_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
                                                     <a href="student_record_details.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Details</a>
+                                                    <a href="pdf_training_student.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-red-500 rounded px-3 py-1 hover:underline">Receipt</a>
                                                 </td>
                                             </tr>
                                         <?php
