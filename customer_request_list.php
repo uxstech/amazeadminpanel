@@ -183,7 +183,7 @@ session_start();
                                                 </td>
                                                 <td class="border text-sm text-gray-500 font-medium px-6 py-4 whitespace-nowrap">
                                                     <a href="customer_request_form_update.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Edit</a>
-                                                    <a href="pdf_customer_requests.php?id=<?php echo $row['id'] ?>" class="font-medium px-1 text-white bg-red-500 rounded px-3 py-1 hover:underline">Receipt</a>
+                                                    <a href="customer_request_pdf_generate.php?id=<?php echo $row['id'] ?>" class=" font-medium px-1 text-white bg-blue-300 rounded px-3 py-1 hover:underline">Genrate receipt</a>
                                                 </td>
                                             </tr>
                                         <?php

@@ -9,6 +9,14 @@ if (isset($_GET['id'])) {
     $row = mysqli_fetch_assoc($data);
 }
 
+if (isset($_GET['selectmop'])) {
+    $mop = $_GET['selectmop'];
+}
+
+if (isset($_GET['otdesc'])) {
+    $otdesc = $_GET['otdesc'];
+}
+
 // Instanciation of inherited class
 $pdf = new PDF_Invoice('P', 'mm', 'A4');
 $pdf->AddPage();
@@ -16,40 +24,46 @@ $pdf->addSociete(
     "Amaze Motor Driving School",
     "Head Office:\n224,\n2nd Floor, Gala Magnus,\nSafal Parisar Rd,\nSouth Bopal,\nAhmedabad, Gujarat 380058"
 );
-$pdf->fact_dev("Branch", str_replace("_", " ", $_SESSION['branch_name']));
+//$pdf->fact_dev("Branch", str_replace("_", " ", $_SESSION['branch_name']));
 $pdf->temporaire("Amaze Motor Driving");
-$pdf->addDate(date("d M Y", strtotime($row['request_date'])));
+//$pdf->addDate(date("d M Y", strtotime($row['request_date'])));
 $pdf->addClientAdresse("Contact Details:\n\n+91 92275755667\n+91 7016003600\ninfoamazemotor@gmail.com\nwww.amazemotordriving.com");
 
 $pdf->addReference($row['customer_name']);
+$pdf->addMOP($mop);
+$pdf->addInvoiceNo(str_pad($row['id'], 10, "0", STR_PAD_LEFT));
 $cols = array(
-    "SR NO"             => 16,
-    "WORK DESCRIPTION"  => 76,
-    "CONTACT"           => 36,
-    "AMOUNT PAID"       => 32,
-    "TOTAL AMOUNT"      => 30
+    "Sr No"             => 16,
+    "Work Description"  => 76,
+    "Contact"           => 36,
+    "Amount Paid"       => 32,
+    "Total Amount"      => 30
 );
 $pdf->addCols($cols);
 $cols = array(
-    "SR NO"             => "C",
-    "WORK DESCRIPTION"  => "L",
-    "CONTACT"           => "C",
-    "AMOUNT PAID"       => "C",
-    "TOTAL AMOUNT"      => "C"
+    "Sr No"             => "C",
+    "Work Description"  => "C",
+    "Contact"           => "C",
+    "Amount Paid"       => "C",
+    "Total Amount"      => "C"
 );
 $pdf->addLineFormat($cols);
 $pdf->addLineFormat($cols);
 
-$y    = 115;
+$y    = 100;
 $line = array(
-    "SR NO"             => "1",
-    "WORK DESCRIPTION"  => $row['work_description'],
-    "CONTACT"           => "+91 " . $row['mobile_number'],
-    "AMOUNT PAID"       => number_format($row['fees_paid']) . ".00",
-    "TOTAL AMOUNT"      => number_format($row['total_fees']) . ".00"
+    "Sr No"             => "1",
+    "Work Description"  => $row['work_description'],
+    "Contact"           => "+91 " . $row['mobile_number'],
+    "Amount Paid"       => number_format($row['fees_paid']) . ".00",
+    "Total Amount"      => number_format($row['total_fees']) . ".00"
 );
 $size = $pdf->addLine($y, $line);
 $y   += $size + 2;
-$pdf->addRemarque("Thank you for being part of Amaze Motor Driving Family");
+$pdf->addOtherDescTitle("Other Input");
+$pdf->addRemarque($otdesc);
 $pdf->addCadreEurosFrancs();
+$pdf->addDateText(date("d M Y", strtotime($row['request_date'])));
+$pdf->addFooter();
+$pdf->addGratitude();
 $pdf->Output();

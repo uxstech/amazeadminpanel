@@ -146,7 +146,7 @@ class PDF_Invoice extends FPDF
 		$this->SetFont('Arial', 'B', 12);
 		$length = $this->GetStringWidth($nom);
 		$this->Cell($length, 2, $nom);
-		$this->SetXY($x1, $y1 + 4);
+		$this->SetXY($x1, $y1 + 12);
 		$this->SetFont('Arial', '', 10);
 		$length = $this->GetStringWidth($adresse);
 		//Coordonn�es de la soci�t�
@@ -251,10 +251,11 @@ class PDF_Invoice extends FPDF
 	// Client address
 	function addClientAdresse($adresse)
 	{
-		$r1     = $this->w - 80;
-		$r2     = $r1 + 68;
-		$y1     = 40;
+		$r1     = $this->w - 70;
+		$r2     = $r1 + 8;
+		$y1     = 20;
 		$this->SetXY($r1, $y1);
+		$this->SetFont("Arial", "", 10);
 		$this->MultiCell(60, 4, $adresse);
 	}
 
@@ -318,10 +319,40 @@ class PDF_Invoice extends FPDF
 		$length = $this->GetStringWidth("Name : " . $ref);
 		$r1  = 10;
 		$r2  = $r1 + $length;
-		$y1  = 92;
+		$y1  = 65;
 		$y2  = $y1 + 5;
 		$this->SetXY($r1, $y1);
+		$this->SetFont("Arial", "B", 10);
 		$this->Cell($length, 4, "Name : " . $ref);
+		$this->SetFont("Arial", "", 10);
+	}
+
+	function addMOP($ref)
+	{
+		$this->SetFont("Arial", "", 10);
+		$length = $this->GetStringWidth("Payment mode : " . $ref);
+		$r1  = 10;
+		$r2  = $r1 + $length;
+		$y1  = 70;
+		$y2  = $y1 + 5;
+		$this->SetXY($r1, $y1);
+		$this->SetFont("Arial", "B", 10);
+		$this->Cell($length, 4, "Payment mode : " . $ref);
+		$this->SetFont("Arial", "", 10);
+	}
+
+	function addInvoiceNo($ref)
+	{
+		$this->SetFont("Arial", "", 10);
+		$length = $this->GetStringWidth("Invoice number : " . $ref);
+		$r1  = 10;
+		$r2  = $r1 + $length;
+		$y1  = 75;
+		$y2  = $y1 + 5;
+		$this->SetXY($r1, $y1);
+		$this->SetFont("Arial", "B", 10);
+		$this->Cell($length, 4, "Invoice number : " . $ref);
+		$this->SetFont("Arial", "", 10);
 	}
 
 	function addCols($tab)
@@ -330,16 +361,17 @@ class PDF_Invoice extends FPDF
 
 		$r1  = 10;
 		$r2  = $this->w - ($r1 * 2);
-		$y1  = 100;
-		$y2  = $this->h - 50 - $y1;
+		$y1  = 85;
+		$y2  = $this->h - 100 - $y1;
 		$this->SetXY($r1, $y1);
 		$this->Rect($r1, $y1, $r2, $y2, "D");
-		$this->Line($r1, $y1 + 6, $r1 + $r2, $y1 + 6);
+		$this->Line($r1, $y1 + 8, $r1 + $r2, $y1 + 8);
 		$colX = $r1;
 		$colonnes = $tab;
 		foreach ($tab as $lib => $pos) {
-			$this->SetXY($colX, $y1 + 2);
-			$this->Cell($pos, 1, $lib, 0, 0, "C");
+			$this->SetXY($colX, $y1);
+			$this->SetFillColor(174, 214, 241);
+			$this->Cell($pos, 9, $lib, 0, 0, "C", true);
 			$colX += $pos;
 			$this->Line($colX, $y1, $colX, $y1 + $y2);
 		}
@@ -400,13 +432,26 @@ class PDF_Invoice extends FPDF
 		return ($maxSize - $ligne);
 	}
 
+	function addOtherDescTitle($remarque)
+	{
+		$this->SetFont("Arial", "B", 10);
+		$length = $this->GetStringWidth($remarque);
+		$r1  = 10;
+		$r2  = $r1 + $length;
+		$y1  = $this->h - 90;
+		$y2  = $y1 + 5;
+		$this->SetXY($r1, $y1);
+		$this->Cell($length, 4, $remarque);
+		$this->SetFont("Arial", "", 10);
+	}
+
 	function addRemarque($remarque)
 	{
 		$this->SetFont("Arial", "", 10);
 		$length = $this->GetStringWidth($remarque);
 		$r1  = 10;
 		$r2  = $r1 + $length;
-		$y1  = $this->h - 45.5;
+		$y1  = $this->h - 85;
 		$y2  = $y1 + 5;
 		$this->SetXY($r1, $y1);
 		$this->Cell($length, 4, $remarque);
@@ -450,14 +495,69 @@ class PDF_Invoice extends FPDF
 	{
 		$r1  = $this->w - 70;
 		$r2  = $r1 + 60;
-		$y1  = $this->h - 25;
+		$y1  = $this->h - 60;
 		$y2  = $y1 + 20;
 
 
-		$this->SetFont("Arial", "B", 8);
-		$this->SetXY($r1 + 22, $y1);
+		$this->SetFont("Arial", "B", 10);
+		$this->SetXY($r1 + 12, $y1);
 		$this->Cell(50, 4, "Authorized Stamp", 0, 0, "C");
 	}
+
+	function addDateText($dateAS)
+	{
+		$r1  = $this->w - 70;
+		$r2  = $r1 + 60;
+		$y1  = $this->h - 55;
+		$y2  = $y1 + 20;
+
+
+		$this->SetFont("Arial", "", 11);
+		$this->SetXY($r1 + 12, $y1);
+		$this->Cell(50, 4, $dateAS, 0, 0, "C");
+	}
+
+	function addFooter()
+	{
+		$r1  = $this->w - 140;
+		$r2  = $r1 + 60;
+		$y1  = $this->h - 35;
+		$y2  = $y1 + 20;
+
+
+		$this->SetFont(
+			"Arial",
+			"",
+			8
+		);
+		$this->SetXY(
+			$r1 + 12,
+			$y1
+		);
+		$this->Cell(50, 4, "This document is computer generated and does not require the registrars signature or the companies stamp in order to be considered valid.", 0, 0, "C");
+	}
+
+	function addGratitude()
+	{
+		$r1  = $this->w - 140;
+		$r2  = $r1 + 60;
+		$y1  = $this->h - 30;
+		$y2  = $y1 + 20;
+
+
+		$this->SetFont(
+			"Arial",
+			"B",
+			8
+		);
+		$this->SetXY(
+			$r1 + 12,
+			$y1
+		);
+		$this->Cell(50, 4, "Thank you for being part of amaze motor driving school.", 0, 0, "C");
+	}
+
+
 
 	// remplit les cadres TVA / Totaux et la remarque
 	// params  = array( "RemiseGlobale" => [0|1],
@@ -591,7 +691,7 @@ class PDF_Invoice extends FPDF
 	function temporaire($texte)
 	{
 		$this->SetFont('Arial', 'B', 50);
-		$this->SetTextColor(203, 203, 203);
+		$this->SetTextColor(239, 238, 238);
 		$this->Rotate(45, 55, 190);
 		$this->Text(55, 180, $texte);
 		$this->Rotate(0);
