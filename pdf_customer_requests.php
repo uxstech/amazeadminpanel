@@ -66,4 +66,4 @@ $pdf->addCadreEurosFrancs();
 $pdf->addDateText(date("d M Y", strtotime($row['request_date'])));
 $pdf->addFooter();
 $pdf->addGratitude();
-$pdf->Output();
+$pdf->Output('', str_replace(" ", "_", strtolower($row['customer_name'])) . "_" . str_pad($row['id'], 10, "0", STR_PAD_LEFT) . ".pdf");
