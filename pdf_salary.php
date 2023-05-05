@@ -12,16 +12,16 @@ if (isset($_GET['id'])) {
 // Instanciation of inherited class
 $pdf = new PDF_Invoice('P', 'mm', 'A4');
 $pdf->AddPage();
+$pdf->Image('assets/amazevisitingcard.jpg', 10, 5, 70, 35);
 $pdf->addSociete(
-    "Amaze Motor Driving School",
     "Head Office:\n224,\n2nd Floor, Gala Magnus,\nSafal Parisar Rd,\nSouth Bopal,\nAhmedabad, Gujarat 380058"
 );
-$pdf->fact_dev("Branch", str_replace("_", " ", $_SESSION['branch_name']));
 $pdf->temporaire("Amaze Motor Driving");
-$pdf->addDate(date("d M Y", strtotime($row['salary_date'])));
 $pdf->addClientAdresse("Contact Details:\n\n+91 92275755667\n+91 7016003600\ninfoamazemotor@gmail.com\nwww.amazemotordriving.com");
 
 $pdf->addReference($row['staff_name']);
+$pdf->addInvoiceNo(str_pad($row['id'], 10, "0", STR_PAD_LEFT));
+
 $cols = array(
     "SR NO"          => 16,
     "STAFF ADDRESS"  => 76,
@@ -40,7 +40,7 @@ $cols = array(
 $pdf->addLineFormat($cols);
 $pdf->addLineFormat($cols);
 
-$y    = 115;
+$y    = 140;
 $line = array(
     "SR NO"             => "1",
     "STAFF ADDRESS"     => $row['staff_address'],
@@ -50,6 +50,8 @@ $line = array(
 );
 $size = $pdf->addLine($y, $line);
 $y   += $size + 2;
-$pdf->addRemarque("Thank you for your hardwork and dedication");
 $pdf->addCadreEurosFrancs();
-$pdf->Output();
+$pdf->addDateText(date('m/d/Y h:i:s a', time()));
+$pdf->addFooter();
+$pdf->addGratitude();
+$pdf->Output('', str_replace(" ", "_", strtolower($row['staff_name'])) . "_" . str_pad($row['id'], 10, "0", STR_PAD_LEFT) . ".pdf");

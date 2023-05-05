@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Generate reciept</title>
+    <title>Generate Receipt</title>
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE, NO-STORE, must-revalidate">
 </head>
 
@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <p class="mb-4 text-md font-medium text-gray-900">Generate Reciept</p>
+                    <p class="mb-4 text-md font-medium text-gray-900">Generate Receipt</p>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
                 </div>
                 <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
@@ -108,7 +108,7 @@ if (isset($_GET['id'])) {
                             </div>
 
                             <div class="p-2 w-full mt-10">
-                                <button name="generatepdf" class=" flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 font-medium rounded text-sm">Generate Reciept</button>
+                                <button name="generatepdf" class=" flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 font-medium rounded text-sm">Generate Receipt</button>
                             </div>
                         </div>
                     </div>

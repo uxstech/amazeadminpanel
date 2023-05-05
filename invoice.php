@@ -137,16 +137,12 @@ class PDF_Invoice extends FPDF
 	}
 
 	// Company
-	function addSociete($nom, $adresse)
+	function addSociete($adresse)
 	{
 		$x1 = 10;
-		$y1 = 8;
+		$y1 = 48;
 		//Positionnement en bas
 		$this->SetXY($x1, $y1);
-		$this->SetFont('Arial', 'B', 12);
-		$length = $this->GetStringWidth($nom);
-		$this->Cell($length, 2, $nom);
-		$this->SetXY($x1, $y1 + 12);
 		$this->SetFont('Arial', '', 10);
 		$length = $this->GetStringWidth($adresse);
 		//Coordonn�es de la soci�t�
@@ -319,7 +315,7 @@ class PDF_Invoice extends FPDF
 		$length = $this->GetStringWidth("Name : " . $ref);
 		$r1  = 10;
 		$r2  = $r1 + $length;
-		$y1  = 65;
+		$y1  = 100;
 		$y2  = $y1 + 5;
 		$this->SetXY($r1, $y1);
 		$this->SetFont("Arial", "B", 10);
@@ -333,7 +329,7 @@ class PDF_Invoice extends FPDF
 		$length = $this->GetStringWidth("Payment mode : " . $ref);
 		$r1  = 10;
 		$r2  = $r1 + $length;
-		$y1  = 70;
+		$y1  = 105;
 		$y2  = $y1 + 5;
 		$this->SetXY($r1, $y1);
 		$this->SetFont("Arial", "B", 10);
@@ -347,7 +343,7 @@ class PDF_Invoice extends FPDF
 		$length = $this->GetStringWidth("Invoice number : " . $ref);
 		$r1  = 10;
 		$r2  = $r1 + $length;
-		$y1  = 75;
+		$y1  = 110;
 		$y2  = $y1 + 5;
 		$this->SetXY($r1, $y1);
 		$this->SetFont("Arial", "B", 10);
@@ -361,8 +357,8 @@ class PDF_Invoice extends FPDF
 
 		$r1  = 10;
 		$r2  = $this->w - ($r1 * 2);
-		$y1  = 85;
-		$y2  = $this->h - 100 - $y1;
+		$y1  = 125;
+		$y2  = $this->h - 110 - $y1;
 		$this->SetXY($r1, $y1);
 		$this->Rect($r1, $y1, $r2, $y2, "D");
 		$this->Line($r1, $y1 + 8, $r1 + $r2, $y1 + 8);
