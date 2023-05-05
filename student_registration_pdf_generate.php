@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 
             <div class="flex flex-wrap w-full mb-10">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <p class="mb-4 text-md font-medium text-gray-900">Generate Receipt</p>
+                    <p class="mb-4 text-md font-medium text-gray-900">Generate Customer Training Registration Receipt</p>
                     <div class="h-1 w-48 bg-yellow-500 rounded"></div>
                 </div>
                 <p class="lg:w-1/2 w-full font-medium text-sm leading-relaxed text-gray-900"> An admin panel enables administrators of an application, website, or IT system
@@ -49,74 +49,6 @@ if (isset($_GET['id'])) {
             <form action="#" method="POST" autocomplete="off">
                 <div class="w-[100%] mx-auto">
                     <div class="flex flex-wrap -m-2">
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="date" class="leading-7 text-sm font-medium text-gray-600">Registration Date</label>
-                                <input type="text" value="<?= $result['registration_date']; ?>" required placeholder="Registration Date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" id="date" name="date" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                            </div>
-                        </div>
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="fees" class="leading-7 text-sm font-medium text-gray-600">Amount (Fees Paid)</label>
-                                <input type="number" value="<?= $result['fees_paid']; ?>" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" required placeholder="Amount Paid" id="fees" name="fees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                            </div>
-                        </div>
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="totalfees" class="leading-7 text-sm font-medium text-gray-600">Total Amount</label>
-                                <input type="number" value="<?= $result['total_fees']; ?>" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" required placeholder="Total Fee" id="totalfees" name="totalfees" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                            </div>
-                        </div>
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="car" class="leading-7 text-sm font-medium text-gray-600">Selected Car</label>
-                                <select id="car" name="car" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-2 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                                    <option class="font-medium" value="" disabled selected>Select Car</option>
-                                    <option class="font-medium" value="Amaze" <?php
-                                                                                if ($result['selected_car'] == "Amaze") {
-                                                                                    echo "selected";
-                                                                                }
-                                                                                ?>>Amaze</option>
-                                    <option class="font-medium" value="Swift" <?php
-                                                                                if ($result['selected_car'] == "Swift") {
-                                                                                    echo "selected";
-                                                                                }
-                                                                                ?>>Swift</option>
-                                    <option class="font-medium" value="WagonR" <?php
-                                                                                if ($result['selected_car'] == "WagonR") {
-                                                                                    echo "selected";
-                                                                                }
-                                                                                ?>>WagonR</option>
-                                    <option class="font-medium" value="eON" <?php
-                                                                            if ($result['selected_car'] == "eON") {
-                                                                                echo "selected";
-                                                                            }
-                                                                            ?>>eON</option>
-                                    <option class="font-medium" value="Celerio" <?php
-                                                                                if ($result['selected_car'] == "Celerio") {
-                                                                                    echo "selected";
-                                                                                }
-                                                                                ?>>Celerio (Automatic)</option>
-                                    <option class="font-medium" value="Tiago" <?php
-                                                                                if ($result['selected_car'] == "Tiago") {
-                                                                                    echo "selected";
-                                                                                }
-                                                                                ?>>Tiago</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="starttime" class="leading-7 text-sm font-medium text-gray-600">Session Start Time</label>
-                                <input type="text" value="<?= $result['session_start_time']; ?>" required placeholder="Start Time" onfocus="(this.type='time')" onblur="if(!this.value)this.type='text'" id="starttime" name="starttime" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                            </div>
-                        </div>
-                        <div class="p-2 w-1/2">
-                            <div class="relative">
-                                <label for="endtime" class="leading-7 text-sm font-medium text-gray-600">Session End Time</label>
-                                <input type="text" value="<?= $result['session_end_time']; ?>" required placeholder="End Time" onfocus="(this.type='time')" onblur="if(!this.value)this.type='text'" id="endtime" name="endtime" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors font-medium duration-200 ease-in-out">
-                            </div>
-                        </div>
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label for="otherdetails" class="leading-7 text-sm font-medium text-gray-600">Other Details</label>

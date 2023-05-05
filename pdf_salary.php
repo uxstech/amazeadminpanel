@@ -51,7 +51,7 @@ $line = array(
 $size = $pdf->addLine($y, $line);
 $y   += $size + 2;
 $pdf->addCadreEurosFrancs();
-$pdf->addDateText(date('m/d/Y h:i:s a', time()));
+$pdf->addDateText(date('m/d/Y', time()));
 $pdf->addFooter();
 $pdf->addGratitude();
-$pdf->Output('', str_replace(" ", "_", strtolower($row['staff_name'])) . "_" . str_pad($row['id'], 10, "0", STR_PAD_LEFT) . ".pdf");
+$pdf->Output('', "ss_" . str_replace(" ", "_", strtolower($row['staff_name'])) . "_" . str_pad($row['id'], 10, "0", STR_PAD_LEFT) . ".pdf");
