@@ -20,7 +20,7 @@ $pdf->temporaire("Amaze Motor Driving");
 $pdf->addClientAdresse("Contact Details:\n\n+91 92275755667\n+91 7016003600\ninfoamazemotor@gmail.com\nwww.amazemotordriving.com");
 
 $pdf->addReference($row['staff_name']);
-$pdf->addInvoiceNo(str_pad($row['id'], 10, "0", STR_PAD_LEFT));
+$pdf->addInvoiceNo(floor(microtime(true) * 1000) . "/" . str_pad($row['id'], 10, "0", STR_PAD_LEFT));
 
 $cols = array(
     "SR NO"          => 16,
