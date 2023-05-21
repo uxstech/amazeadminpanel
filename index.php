@@ -86,7 +86,7 @@ session_start();
                                         to manage its configurations, settings,
                                         content, and features and carry out oversight functions critical to the
                                         business. It allows them to view the state of
-                                        the platform and take any action in the performance of their duties
+                                        the platform and take any action in the performance of their duties.
                                     </p>
                                 </div>
                             </div>
