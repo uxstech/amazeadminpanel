@@ -81,7 +81,7 @@ if (isset($_GET['id'])) {
 <?php
 if (isset($_POST['generatepdf'])) {
 ?>
-    <meta http-equiv="refresh" content="0; url = http://localhost/amazeadminpanel/pdf_training_student.php?id=<?php echo $_GET['id'] ?>&&selectmop=<?php echo $_POST['selectmop'] ?>&&otdesc=<?php echo $_POST['otherdetails'] ?>" />
+    <meta http-equiv="refresh" content="0; url = https://www.amazemotordriving.com/amazeadminpanel/pdf_training_student.php?id=<?php echo $_GET['id'] ?>&&selectmop=<?php echo $_POST['selectmop'] ?>&&otdesc=<?php echo $_POST['otherdetails'] ?>" />
 <?php
 }
 
@@ -94,7 +94,7 @@ if ($userprofile == true) {
                 text: 'User login is required to access this page so please login to continue',
                 });</script>";
 ?>
-    <meta http-equiv="refresh" content="0; url = http://localhost/amazeadminpanel/index.php" />
+    <meta http-equiv="refresh" content="0; url = https://www.amazemotordriving.com/amazeadminpanel/index.php" />
 <?php
 }
 ?>

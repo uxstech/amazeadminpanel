@@ -121,7 +121,7 @@ if (isset($_POST['login'])) {
         $_SESSION['branch_name'] = $row["branch_name"];
         $_SESSION['role'] = $row["role"];
 ?>
-        <meta http-equiv="refresh" content="0; url = http://localhost/amazeadminpanel/dashboard.php" />
+        <meta http-equiv="refresh" content="0; url = https://www.amazemotordriving.com/amazeadminpanel/dashboard.php" />
 <?php
     } else {
         echo "<script type='text/javascript'>Swal.fire({
