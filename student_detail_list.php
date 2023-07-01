@@ -327,7 +327,6 @@ include("db_connection.php");
                         <?php
                         }
                         ?>
-                        ?>
                     </div>
                 </div>
             </div>
