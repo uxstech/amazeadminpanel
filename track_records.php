@@ -136,7 +136,7 @@ session_start();
 
                                     if (isset($_GET['search'])) {
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM amd_track_records  WHERE car like '%" . $filtervalues . "%' AND created_by ='" . $branchName . "' ORDER BY id DESC";
+                                        $query = "SELECT * FROM amd_track_records  WHERE name_of_user like '%" . $filtervalues . "%' AND created_by ='" . $branchName . "' ORDER BY id DESC";
                                     } else {
                                         $query = "SELECT * FROM amd_track_records  WHERE created_by ='" . $branchName . "' ORDER BY id DESC LIMIT " . $offset . "," . $total_records_per_page . "";
                                     }
