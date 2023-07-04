@@ -9,7 +9,8 @@ $dataPoints = array(
     array("label" => "Expense on car maintainence", "y" => $sum_of_maintainence),
     array("label" => "Expense on staff salary", "y" => $sum_of_salary),
     array("label" => "Other credited transactions", "y" => $sum_of_credited_transactions),
-    array("label" => "Other debited transactions", "y" => $sum_of_debited_transactions)
+    array("label" => "Other debited transactions", "y" => $sum_of_debited_transactions),
+    array("label" => "Income from track usage", "y" => $sum_of_track)
 )
 
 ?>
