@@ -82,7 +82,7 @@ if (isset($_GET['id'])) {
 <?php
 if (isset($_POST['generatepdf'])) {
 ?>
-    <meta http-equiv="refresh" content="0; url = amazeadminpanel/pdf_track_requests.php?id=<?php echo $_GET['id'] ?>&&selectmop=<?php echo $_POST['selectmop'] ?>&&otdesc=<?php echo $_POST['otherdesc'] ?>" />
+    <meta http-equiv="refresh" content="0; url = pdf_track_requests.php?id=<?php echo $_GET['id'] ?>&&selectmop=<?php echo $_POST['selectmop'] ?>&&otdesc=<?php echo $_POST['otherdesc'] ?>" />
 <?php
 }
 ?>
